@@ -55,10 +55,10 @@ namespace ServiceReference1
     {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CheckLogin", ReplyAction="http://tempuri.org/IService1/CheckLoginResponse")]
-        string CheckLogin(string login);
+        string CheckLogin(string login, string pwd);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CheckLogin", ReplyAction="http://tempuri.org/IService1/CheckLoginResponse")]
-        System.Threading.Tasks.Task<string> CheckLoginAsync(string login);
+        System.Threading.Tasks.Task<string> CheckLoginAsync(string login, string pwd);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
         string GetData(int value);
@@ -123,14 +123,14 @@ namespace ServiceReference1
         {
         }
         
-        public string CheckLogin(string login)
+        public string CheckLogin(string login, string pwd)
         {
-            return base.Channel.CheckLogin(login);
+            return base.Channel.CheckLogin(login, pwd);
         }
         
-        public System.Threading.Tasks.Task<string> CheckLoginAsync(string login)
+        public System.Threading.Tasks.Task<string> CheckLoginAsync(string login, string pwd)
         {
-            return base.Channel.CheckLoginAsync(login);
+            return base.Channel.CheckLoginAsync(login, pwd);
         }
         
         public string GetData(int value)
@@ -181,7 +181,7 @@ namespace ServiceReference1
         {
             if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IService1))
             {
-                return new System.ServiceModel.EndpointAddress("http://localhost:51720/Service1.svc");
+                return new System.ServiceModel.EndpointAddress("http://127.0.0.1/Service1.svc");
             }
             throw new System.InvalidOperationException(string.Format("Le point de terminaison nommé \'{0}\' est introuvable.", endpointConfiguration));
         }
