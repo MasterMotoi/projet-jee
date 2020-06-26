@@ -13,10 +13,10 @@ namespace WcfService
     public interface IService1
     {
         [OperationContract]
-        string CheckLogin(string login);
+        string CheckLogin(string login, string pwd);
 
         [OperationContract]
-        string GetData(int value);
+        string GetData(int value); 
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);

@@ -14,30 +14,34 @@ namespace WcfService
     public class Service1 : IService1
     {
 
-        public string CheckLogin(string login)
+        public string CheckLogin(string login, string pwd)
         {
+
+            System.Threading.Thread.Sleep(10000);
             switch(login)
             {
                 case "fplastina":
                     {
-                        return "Bienvenue Fabien";
+                        return $"Bienvenue Fabien, votre password est : {pwd}";
                     }
 
                 case "tbrunetti":
                     {
-                        return "Bienvenue Tom";
+                        return $"Bienvenue Tom, votre password est : {pwd}";
                     }
 
                 case "agremillet":
                     {
-                        return "Bienvenue Antoine";
+                        return $"Bienvenue Antoine, votre password est : {pwd}";
                     }
 
                 default:
                     {
-                        return "Login inconnu, peut être vous êtes vous trompé ?";
+                        return $"Login inconnu, peut être vous êtes vous trompé ? Votre password est : {pwd}";
                     }
             }
+
+            
         }
 
         public string GetData(int value)
