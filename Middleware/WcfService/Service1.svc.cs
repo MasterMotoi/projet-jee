@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using model;
 
 namespace WcfService
 {
@@ -13,6 +14,25 @@ namespace WcfService
     // REMARQUE : pour lancer le client test WCF afin de tester ce service, sélectionnez Service1.svc ou Service1.svc.cs dans l'Explorateur de solutions et démarrez le débogage.
     public class Service1 : IService1
     {
+        public void Server (model.MsgStruct message)
+        {
+            string operationName = message.operationName;
+            string tokeApp = message.tokenApp;
+            //check si token_app valide (retour message sinon)
+
+            //on envoie au groupe de service adequate
+            switch(operationName)
+            {
+                case "authentification":
+
+                    break;
+                default:
+                    break;
+            }
+
+
+
+        }
 
         public string CheckLogin(string login, string pwd)
         {
