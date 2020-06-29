@@ -14,6 +14,13 @@ namespace ServiceReference1
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="msgStruct", Namespace="http://schemas.datacontract.org/2004/07/com")]
+    public partial class msgStruct : object
+    {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
     [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/WcfService")]
     public partial class CompositeType : object
     {
@@ -55,10 +62,10 @@ namespace ServiceReference1
     {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CheckLogin", ReplyAction="http://tempuri.org/IService1/CheckLoginResponse")]
-        string CheckLogin(string login, string pwd);
+        string CheckLogin(ServiceReference1.msgStruct msgLogin);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CheckLogin", ReplyAction="http://tempuri.org/IService1/CheckLoginResponse")]
-        System.Threading.Tasks.Task<string> CheckLoginAsync(string login, string pwd);
+        System.Threading.Tasks.Task<string> CheckLoginAsync(ServiceReference1.msgStruct msgLogin);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
         string GetData(int value);
@@ -123,14 +130,14 @@ namespace ServiceReference1
         {
         }
         
-        public string CheckLogin(string login, string pwd)
+        public string CheckLogin(ServiceReference1.msgStruct msgLogin)
         {
-            return base.Channel.CheckLogin(login, pwd);
+            return base.Channel.CheckLogin(msgLogin);
         }
         
-        public System.Threading.Tasks.Task<string> CheckLoginAsync(string login, string pwd)
+        public System.Threading.Tasks.Task<string> CheckLoginAsync(ServiceReference1.msgStruct msgLogin)
         {
-            return base.Channel.CheckLoginAsync(login, pwd);
+            return base.Channel.CheckLoginAsync(msgLogin);
         }
         
         public string GetData(int value)
