@@ -6,6 +6,7 @@ using model;
 using System.Threading.Tasks;
 using sqlAccess;
 using dataPersistence;
+using System.ServiceModel;
 
 namespace authentificationWorkflow
 {
@@ -27,6 +28,8 @@ namespace authentificationWorkflow
         public model.MsgStruct validateAuthentification(model.MsgStruct message)
         {
             model.MsgStruct returnMsg = new model.MsgStruct();
+            EndpointAddress epSql = new EndpointAddress("http://localhost:8010/Server/services/sql_access");
+
             User[] users;
             string tokenUser="";
             string login = message.data[0].ToString();
@@ -34,40 +37,57 @@ namespace authentificationWorkflow
 
             //check password & login en BDD
             //sqlAccess.sqlConnect();
-            users = sqlAccess.getUserBy2ParametersValue("login", login, "password", password);
-            if(users.Length>0)
+            try
             {
-                Console.WriteLine("authentification cool");
-                //generation tokenUser
-                tokenUser = "'Z|1li:GZ3VW<^3";
+                sqlAccess.ISqlAccess proxySql= ChannelFactory<sqlAccess.ISqlAccess>.CreateChannel(new BasicHttpBinding(), epSql);
+                Console.WriteLine("calling CAM");
+                users = proxySql.getUserBy2ParametersValue("login", login, "password", password);
+                Console.WriteLine("CAM call finished");
 
-                returnMsg.statutOp = true;
-                returnMsg.info = "successful authentification";
-                //msg.tokenUser = tokenUser;
-                returnMsg.operationName = "auth_return";
-                returnMsg.tokenApp = "MiddlewareToken";
-                returnMsg.tokenUser = tokenUser;
-                returnMsg.appVersion = "1.0";
-                returnMsg.operationVersion = "1.0";
-                returnMsg.data = new object[2] { (object)true, (object)tokenUser };
+                if (users.Length > 0)
+                {
+                    Console.WriteLine("authentification cool");
+                    //generation tokenUser
+                    tokenUser = "'Z|1li:GZ3VW<^3";
+
+                    returnMsg.statutOp = true;
+                    returnMsg.info = "successful authentification";
+                    //msg.tokenUser = tokenUser;
+                    returnMsg.operationName = "auth_return";
+                    returnMsg.tokenApp = "MiddlewareToken";
+                    returnMsg.tokenUser = tokenUser;
+                    returnMsg.appVersion = "1.0";
+                    returnMsg.operationVersion = "1.0";
+                    returnMsg.data = new object[2] { (object)true, (object)tokenUser };
+                }
+                else // wrong login / password
+                {
+                    Console.WriteLine("login ou mdp non trouvze");
+                    returnMsg.statutOp = true;
+                    returnMsg.info = "unsuccessful authentification - wrong login and or problem";
+                    //msg.tokenUser = tokenUser;
+                    returnMsg.operationName = "auth_return";
+                    returnMsg.tokenApp = "MiddlewareToken";
+                    //returnMsg.tokenUser = "";
+                    returnMsg.appVersion = "1.0";
+                    returnMsg.operationVersion = "1.0";
+                    returnMsg.data = new object[2] { (object)true, (object)"" };
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("login ou mdp non trouvze");
-                returnMsg.statutOp = true;
-                returnMsg.info = "unsuccessful authentification - wrong login and or problem";
+                Console.WriteLine(ex.Message);
+                //return message SQM ACASSE
+                returnMsg.statutOp = false;
+                returnMsg.info = "unsuccessful authentification - Database service access error";
                 //msg.tokenUser = tokenUser;
-                returnMsg.operationName = "auth_return";
+                returnMsg.operationName = "return";
                 returnMsg.tokenApp = "MiddlewareToken";
                 //returnMsg.tokenUser = "";
                 returnMsg.appVersion = "1.0";
                 returnMsg.operationVersion = "1.0";
-                returnMsg.data = new object[2] { (object)true, (object)"" };
+                returnMsg.data = new object[2] { (object)false, (object)"Database access error" };
             }
-
-
-
-
 
 
 

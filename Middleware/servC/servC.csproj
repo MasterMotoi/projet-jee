@@ -62,6 +62,10 @@
       <Project>{bacbc0b0-d718-4022-8131-ae5379b00c94}</Project>
       <Name>model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\sqlAccess\sqlAccess.csproj">
+      <Project>{cc31ccb4-96e6-44a6-9755-6bd464072457}</Project>
+      <Name>sqlAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WcfService\WcfService.csproj">
       <Project>{8799b4ac-a0b4-4a4f-a41f-1b681931931d}</Project>
       <Name>WcfService</Name>

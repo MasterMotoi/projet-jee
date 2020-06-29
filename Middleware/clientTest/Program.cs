@@ -27,7 +27,7 @@ namespace clientTest
 
                 Console.WriteLine("calling server");
                 msg.info = "auth_request";
-                msg.tokenApp= "123456";
+                msg.tokenApp= "?h:XPjO9b)z3Ox7";
                 msg.tokenUser = null;
                 msg.appVersion = "1.0";
                 msg.operationVersion = "1.0";

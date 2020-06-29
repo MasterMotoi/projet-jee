@@ -9,9 +9,8 @@ using dataPersistence;
 
 namespace sqlAccess
 {
-    public class SqlAccess
+    public class SqlAccess : ISqlAccess
     {
-        //SqlConnection sqlCon;
 
         public void sqlConnect ()
         {

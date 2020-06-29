@@ -44,7 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="file.cs" />
-    <Compile Include="Interface1.cs" />
     <Compile Include="msgStruct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
