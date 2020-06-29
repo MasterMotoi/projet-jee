@@ -50,26 +50,21 @@ namespace authentificationWorkflow
                     //generation tokenUser
                     tokenUser = "'Z|1li:GZ3VW<^3";
 
-                    returnMsg.statutOp = false;
+                    //returnMsg.statutOp = false;
                     returnMsg.info = "successful authentification";
                     //msg.tokenUser = tokenUser;
-                    returnMsg.operationName = "auth_return";
-                    returnMsg.tokenApp = "MiddlewareToken";
+                    //returnMsg.operationName = "auth_return";
+                    //returnMsg.tokenApp = "MiddlewareToken";
                     returnMsg.tokenUser = tokenUser;
-                    returnMsg.appVersion = "1.0";
+                    //returnMsg.appVersion = "1.0";
                     returnMsg.operationVersion = "1.0";
                     returnMsg.data = new object[2] { (object)true, (object)tokenUser };
                 }
                 else // wrong login / password
                 {
                     Console.WriteLine("login ou mdp non trouvze");
-                    returnMsg.statutOp = false;
                     returnMsg.info = "unsuccessful authentification - wrong login and or problem";
-                    //msg.tokenUser = tokenUser;
                     returnMsg.operationName = "auth_return";
-                    returnMsg.tokenApp = "MiddlewareToken";
-                    //returnMsg.tokenUser = "";
-                    returnMsg.appVersion = "1.0";
                     returnMsg.operationVersion = "1.0";
                     returnMsg.data = new object[2] { (object)false, (object)"" };
                 }
@@ -80,15 +75,10 @@ namespace authentificationWorkflow
                 //return message SQM ACASSE
                 returnMsg.statutOp = false;
                 returnMsg.info = "unsuccessful authentification - Database service access error";
-                //msg.tokenUser = tokenUser;
                 returnMsg.operationName = "return";
-                returnMsg.tokenApp = "MiddlewareToken";
-                //returnMsg.tokenUser = "";
-                returnMsg.appVersion = "1.0";
                 returnMsg.operationVersion = "1.0";
                 returnMsg.data = new object[2] { (object)false, (object)"Database access error" };
             }
-
 
 
 

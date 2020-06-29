@@ -52,6 +52,10 @@
       <Project>{5be2d795-55c4-4f0a-970b-202d1df9b3f6}</Project>
       <Name>authentificationWorkflow</Name>
     </ProjectReference>
+    <ProjectReference Include="..\decryptionWorkflow\decryptionWorkflow.csproj">
+      <Project>{420098c0-9910-4b97-b94e-156d508e476a}</Project>
+      <Name>decryptionWorkflow</Name>
+    </ProjectReference>
     <ProjectReference Include="..\model\model.csproj">
       <Project>{bacbc0b0-d718-4022-8131-ae5379b00c94}</Project>
       <Name>model</Name>

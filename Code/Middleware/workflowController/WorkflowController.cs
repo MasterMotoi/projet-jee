@@ -15,6 +15,7 @@ namespace workflowController
         public model.MsgStruct workflowControl (model.MsgStruct message)
         {
             EndpointAddress epAuth = new EndpointAddress("http://localhost:8010/Server/services/auth");
+            EndpointAddress epDecrypt = new EndpointAddress("http://localhost:8010/Server/services/decrypt");
             model.MsgStruct returnMsg = new model.MsgStruct();
 
             //Analyse la version de l'app et appelle le controlleur de workflow adéquate en fontion de l'opération
@@ -37,29 +38,35 @@ namespace workflowController
                             Console.WriteLine("Auth CW call finished");                            
                             break;
                         default: //retourne message indiquant que le type d'appversion est inconnu
-                            returnMsg.statutOp = false;
                             returnMsg.info = "unsuccessful authentification - unknow appVersion";
-                            //msg.tokenUser = tokenUser;
-                            returnMsg.operationName = "auth_return";
-                            returnMsg.tokenApp = "MiddlewareToken";
-                            //returnMsg.tokenUser = "";
-                            returnMsg.appVersion = "1.0";
-                            returnMsg.operationVersion = "1.0";
                             returnMsg.data = new object[2] { (object)false, (object)"unknow appVersion" };                             
                             break;
-                    }             
+                    }
+                    returnMsg.operationName = "auth_return";
                     break;
-
+                case "decrypt":
+                    //analyse app_version
+                    switch (appVersion)
+                    {
+                        case "1.0": //Appelle du controlleur de workflow d'authentification
+                            //*** RAJOUTER TRY CATCH***
+                            decryptionWorkflow.IDecryption decryptionWorkflow = ChannelFactory<decryptionWorkflow.IDecryption>.CreateChannel(new BasicHttpBinding(), epDecrypt);
+                            Console.WriteLine("calling Decrypt CW");
+                            returnMsg = decryptionWorkflow.decrypt(message);
+                            Console.WriteLine("Decrypt CW call finished");
+                            break;
+                        default: //retourne message indiquant que le type d'appversion est inconnu
+                            returnMsg.info = "unsuccessful authentification - unknow appVersion";
+                            returnMsg.data = new object[2] { (object)false, (object)"unknow appVersion" };
+                            break;
+                    }
+                    returnMsg.tokenUser = message.tokenUser;
+                    returnMsg.operationName = "decrypt_return";
+                    break;
                 default:
                     //retourne mesage comme quoi le type d'operation est inconnu
-                    returnMsg.statutOp = false;
                     returnMsg.info = "unsuccessful authentification - unknow operationName";
-                    //msg.tokenUser = tokenUser;
-                    returnMsg.operationName = "unknown_return";
-                    returnMsg.tokenApp = "MiddlewareToken";
-                    //returnMsg.tokenUser = "";
-                    returnMsg.appVersion = "1.0";
-                    returnMsg.operationVersion = "1.0";
+                    returnMsg.operationName = "return";
                     returnMsg.data = new object[2] { (object)false, (object)"unknow operationName" };
                     break;
             }

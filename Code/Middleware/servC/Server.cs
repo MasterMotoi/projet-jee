@@ -34,13 +34,8 @@ namespace servC
                 {
                     Console.WriteLine(ex.Message);
                     //return message error CAM
-                    returnMsg.statutOp = false;
                     returnMsg.info = "unsuccessful authentification - CAM access error";
-                    //msg.tokenUser = tokenUser;
                     returnMsg.operationName = "return";
-                    returnMsg.tokenApp = "MiddlewareToken";
-                    //returnMsg.tokenUser = "";
-                    returnMsg.appVersion = "1.0";
                     returnMsg.operationVersion = "1.0";
                     returnMsg.data = new object[2] { (object)false, (object)"CAM access error" };
                 }
@@ -48,17 +43,13 @@ namespace servC
             else
             {
                 //on renvoit un message informant le client que son token app n'est ps valide
-
-                returnMsg.statutOp = false;
                 returnMsg.info = "unsuccessful authentification - unknow tokenApp";
-                //msg.tokenUser = tokenUser;
                 returnMsg.operationName = "return";
-                returnMsg.tokenApp = "MiddlewareToken";
-                //returnMsg.tokenUser = "";
-                returnMsg.appVersion = "1.0";
-                returnMsg.operationVersion = "1.0";
                 returnMsg.data = new object[2] { (object)false, (object)"unknow appVersion" };
             }
+            returnMsg.statutOp = false;
+            returnMsg.tokenApp = "R]f^l(sj9.*HX+u";
+            returnMsg.appVersion = "1.0";
 
             return returnMsg;
 
