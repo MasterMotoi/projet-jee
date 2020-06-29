@@ -49,9 +49,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\dataPersistence\dataPersistence.csproj">
+      <Project>{ca7d0a31-5585-4879-a21b-7709310d6814}</Project>
+      <Name>dataPersistence</Name>
+    </ProjectReference>
     <ProjectReference Include="..\model\model.csproj">
       <Project>{bacbc0b0-d718-4022-8131-ae5379b00c94}</Project>
       <Name>model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\sqlAccess\sqlAccess.csproj">
+      <Project>{cc31ccb4-96e6-44a6-9755-6bd464072457}</Project>
+      <Name>sqlAccess</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

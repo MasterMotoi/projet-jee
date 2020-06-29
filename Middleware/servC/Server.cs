@@ -17,13 +17,11 @@ namespace servC
             EndpointAddress epCAM = new EndpointAddress("http://localhost:8010/Server/services/workflow_controller");
             model.MsgStruct returnMsg = new model.MsgStruct();
 
-
             string operationName = message.operationName;
             string tokenApp = message.tokenApp;
 
-            //recuperer le tokenApp en base
             //verif tokenApp            
-            if (tokenApp == "123456")
+            if (tokenApp == "?h:XPjO9b)z3Ox7")
             {                
                 try
                 {
