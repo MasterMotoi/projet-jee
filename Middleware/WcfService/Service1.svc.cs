@@ -1,4 +1,5 @@
-﻿using System;
+﻿using com;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -14,30 +15,30 @@ namespace WcfService
     public class Service1 : IService1
     {
 
-        public string CheckLogin(string login, string pwd)
+        public string CheckLogin(com.msgStruct msgLogin)
         {
+            string[] login = (string[]) msgLogin.getData();
 
-            System.Threading.Thread.Sleep(10000);
-            switch(login)
+            switch(login[0])    
             {
-                case "fplastina":
+                case "fabien.plastina@viacesi.fr":
                     {
-                        return $"Bienvenue Fabien, votre password est : {pwd}";
+                        return $"Bienvenue Fabien, votre password est : {login[1]} et le token app est : {login[2]}";
                     }
 
-                case "tbrunetti":
+                case "tom.brunetti@viacesi.fr":
                     {
-                        return $"Bienvenue Tom, votre password est : {pwd}";
+                        return $"Bienvenue Tom, votre password est : {login[1]} et le token app est : {login[2]}";
                     }
 
-                case "agremillet":
+                case "antoine.gremillet@viacesi.fr":
                     {
-                        return $"Bienvenue Antoine, votre password est : {pwd}";
+                        return $"Bienvenue Antoine, votre password est : {login[1]} et le token app est : {login[2]}";
                     }
 
                 default:
                     {
-                        return $"Login inconnu, peut être vous êtes vous trompé ? Votre password est : {pwd}";
+                        return $"Login inconnu, peut être vous êtes vous trompé ? Votre password est : {login[1]} et le token app est : {login[2]}";
                     }
             }
 

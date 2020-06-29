@@ -1,0 +1,18 @@
+﻿<Window x:Class="WpfFiles.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfFiles"
+        mc:Ignorable="d"
+        Title="File selection" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="browseBtn" Content="Browse" HorizontalAlignment="Left" Margin="412,52,0,0" VerticalAlignment="Top" Height="48" Width="79" Click="Button_Click"/>
+        <ListBox x:Name="filenamesLb" Margin="53,120,309,42"/>
+        <Label x:Name="label1" Content="Good, now that you are logged in, press the browse button " HorizontalAlignment="Left" Margin="53,52,0,0" VerticalAlignment="Top" Width="347"/>
+        <Label Content="to select your files." HorizontalAlignment="Left" Margin="53,82,0,0" VerticalAlignment="Top"/>
+        <Image HorizontalAlignment="Left" Height="43" Margin="690,384,0,0" VerticalAlignment="Top" Width="100" Source="/cesi.png"/>
+        <Button x:Name="sendBtn" Content="Send" HorizontalAlignment="Left" Margin="519,360,0,0" VerticalAlignment="Top" Height="32" Width="62" Click="sendBtn_Click"/>
+
+    </Grid>
+</Window>

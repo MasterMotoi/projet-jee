@@ -1,4 +1,5 @@
-﻿using System;
+﻿using com;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -13,7 +14,7 @@ namespace WcfService
     public interface IService1
     {
         [OperationContract]
-        string CheckLogin(string login, string pwd);
+        string CheckLogin(com.msgStruct msgLogin);
 
         [OperationContract]
         string GetData(int value); 

@@ -1,39 +1,37 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Controller;
 
 namespace Client
 {
     class client
     {
-        static async void asynchronousmethod(string login, string pwd, ServiceReference1.Service1Client client)
+        /*static async void asynchronousmethod(string[] login, ServiceReference1.Service1Client client)
         {
-            Console.WriteLine(await client.CheckLoginAsync(login, pwd));
+            Console.WriteLine(await client.CheckLoginAsync(login));
 
-        }
+        }*/
 
         static void Main(string[] args)
         {
-            var client = new ServiceReference1.Service1Client();
-            var login = "";
-            var pwd = "";
+            String[] login = new string[3];
+            var controller = new controller();
+            //var client = new ServiceReference1.Service1Client();
 
-            do
-            {
-                Console.WriteLine("Entrez un Login :");
+            Console.WriteLine("Entrez un Login :");
 
-                login = Console.ReadLine();
+            login[0] = Console.ReadLine();
 
-                if (login != "quit")
-                {
-                    Console.WriteLine("Entrez un Password :");
+            Console.WriteLine("Entrez un Password :");
 
-                    pwd = Console.ReadLine();
+            login[1] = Console.ReadLine();
 
-                    Task.Run(()=>asynchronousmethod(login, pwd, client));
-                }
+            Console.WriteLine("Connexion en cours...");
 
-            } while (login != "quit");
-            
+            controller.checkAndSend(login);
+
+            //Task.Run(()=>asynchronousmethod(login, client));
+
 
             Console.ReadLine();
         
