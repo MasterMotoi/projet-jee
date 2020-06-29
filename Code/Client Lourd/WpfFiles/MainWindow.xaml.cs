@@ -17,6 +17,7 @@ using Controller;
 using com;
 using System.IO;
 using System.Threading;
+using System.Windows.Controls.Primitives;
 
 namespace WpfFiles
 {
@@ -37,16 +38,12 @@ namespace WpfFiles
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            emptyList.IsOpen = false;
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.DefaultExt = ".txt";
             ofd.Multiselect = true;
             ofd.Filter = "Text Document (.txt)|*.txt";
             ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-
-            controller ctrl = new controller();
-
-            fileStruct file = new fileStruct();
 
             if (ofd.ShowDialog() == true)
             {                
@@ -61,6 +58,9 @@ namespace WpfFiles
         private void sendBtn_Click(object sender, RoutedEventArgs e)
         {
             fileStruct[] files = new fileStruct[filenamesLb.Items.Count];
+            int i = 0;
+            controller ctrl = new controller();
+
 
             foreach (string filename in filenamesLb.Items)
             {
@@ -71,10 +71,17 @@ namespace WpfFiles
 
                 fileObj.content = File.ReadAllText(filename);
 
-                files.Prepend(fileObj);
+                files[i] = fileObj;
+                i++;            
             }
 
-            Console.ReadLine();
+            filenamesLb.Items.Clear();
+
+            if (ctrl.checkFilesAndSend(files) == false)
+            {
+                emptyList.IsOpen = true;
+            }
+
         }
     }
 }

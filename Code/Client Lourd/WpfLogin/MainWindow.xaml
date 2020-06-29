@@ -14,7 +14,7 @@
         <Label x:Name="usrnameLbl" Content="Username" HorizontalAlignment="Left" Margin="347,117,0,0" VerticalAlignment="Top"/>
         <Label x:Name="pwdLbl" Content="Password" HorizontalAlignment="Left" Margin="349,0,0,0" VerticalAlignment="Center"/>
         <Label x:Name="waitLbl" Content="Logging in, please wait..." HorizontalAlignment="Left" Margin="310,345,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <Image HorizontalAlignment="Left" Height="42" Margin="690,384,0,0" VerticalAlignment="Top" Width="100" Source="/cesi.png"/>
+        <Image HorizontalAlignment="Left" Height="42" Margin="690,367,0,0" VerticalAlignment="Top" Width="100" Source="/cesi.png"/>
 
     </Grid>
 </Window>

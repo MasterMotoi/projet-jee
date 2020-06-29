@@ -11,8 +11,10 @@
         <ListBox x:Name="filenamesLb" Margin="53,120,309,42"/>
         <Label x:Name="label1" Content="Good, now that you are logged in, press the browse button " HorizontalAlignment="Left" Margin="53,52,0,0" VerticalAlignment="Top" Width="347"/>
         <Label Content="to select your files." HorizontalAlignment="Left" Margin="53,82,0,0" VerticalAlignment="Top"/>
-        <Image HorizontalAlignment="Left" Height="43" Margin="690,384,0,0" VerticalAlignment="Top" Width="100" Source="/cesi.png"/>
+        <Image HorizontalAlignment="Left" Height="43" Margin="683,360,0,0" VerticalAlignment="Top" Width="100" Source="/cesi.png"/>
         <Button x:Name="sendBtn" Content="Send" HorizontalAlignment="Left" Margin="519,360,0,0" VerticalAlignment="Top" Height="32" Width="62" Click="sendBtn_Click"/>
-
+        <Popup x:Name="emptyList" Width="300" Height="50">
+            <TextBlock Text="You have to chose at least a file" Height="50" Width="300" Background="Red"/>
+        </Popup>
     </Grid>
 </Window>

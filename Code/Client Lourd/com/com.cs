@@ -4,7 +4,7 @@ namespace com
 {
     public class comClass
     {
-        public void sendLoginQuerry (string[] login)
+        public void sendLoginQuery (string[] login)
         {
             var client = new ServiceReference1.Service1Client();
             
@@ -16,6 +16,11 @@ namespace com
             msg.setTokenApp(login[2]);
 
             //client.CheckLogin(msg);
+        }
+
+        public void sendFilesQuery(fileStruct[] filesList)
+        {
+
         }
     }
 }
