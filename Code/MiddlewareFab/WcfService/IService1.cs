@@ -1,11 +1,11 @@
-﻿using System;
+﻿using com;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
-using model;
 
 namespace WcfService
 {
@@ -14,10 +14,7 @@ namespace WcfService
     public interface IService1
     {
         [OperationContract]
-        void Server(model.MsgStruct message);
-
-        [OperationContract]
-        string CheckLogin(string login, string pwd);
+        string CheckLogin(com.msgStruct msgLogin);
 
         [OperationContract]
         string GetData(int value); 
