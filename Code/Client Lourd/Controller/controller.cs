@@ -26,7 +26,7 @@ namespace Controller
             }
         }
 
-        public bool checkFilesAndSend(model.File[] fileList)
+        public bool checkFilesAndSend(String[] fileList)
         {
             bool isfull = fileList.Count() == 0 ? false : true;
 
