@@ -12,7 +12,7 @@ namespace com
             
             msg.setInfo("Demande de login");
             msg.setData((object[])login);
-            msg.setOperationName("authentificati on");
+            msg.setOperationName("authentification");
             msg.setTokenApp(login[2]);
 
             //client.CheckLogin(msg);
@@ -20,6 +20,13 @@ namespace com
 
         public void sendFilesQuery(fileStruct[] filesList)
         {
+            msgStruct msg = new msgStruct();
+
+            msg.setInfo("Demande de login");
+            msg.setData((object[])filesList);
+            msg.setOperationName("Sending files for decryption");
+            
+
 
         }
     }
