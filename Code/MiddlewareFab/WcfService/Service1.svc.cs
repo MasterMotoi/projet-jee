@@ -1,4 +1,5 @@
-﻿using System;
+﻿using com;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -6,7 +7,6 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
-using model;
 
 namespace WcfService
 {
@@ -14,50 +14,31 @@ namespace WcfService
     // REMARQUE : pour lancer le client test WCF afin de tester ce service, sélectionnez Service1.svc ou Service1.svc.cs dans l'Explorateur de solutions et démarrez le débogage.
     public class Service1 : IService1
     {
-        public void Server (model.MsgStruct message)
+
+        public string CheckLogin(com.msgStruct msgLogin)
         {
-            string operationName = message.operationName;
-            string tokeApp = message.tokenApp;
-            //check si token_app valide (retour message sinon)
+            string[] login = (string[]) msgLogin.getData();
 
-            //on envoie au groupe de service adequate
-            switch(operationName)
+            switch(login[0])    
             {
-                case "authentification":
-
-                    break;
-                default:
-                    break;
-            }
-
-
-
-        }
-
-        public string CheckLogin(string login, string pwd)
-        {
-
-            System.Threading.Thread.Sleep(10000);
-            switch(login)
-            {
-                case "fplastina":
+                case "fabien.plastina@viacesi.fr":
                     {
-                        return $"Bienvenue Fabien, votre password est : {pwd}";
+                        return $"Bienvenue Fabien, votre password est : {login[1]} et le token app est : {login[2]}";
                     }
 
-                case "tbrunetti":
+                case "tom.brunetti@viacesi.fr":
                     {
-                        return $"Bienvenue Tom, votre password est : {pwd}";
+                        return $"Bienvenue Tom, votre password est : {login[1]} et le token app est : {login[2]}";
                     }
 
-                case "agremillet":
+                case "antoine.gremillet@viacesi.fr":
                     {
-                        return $"Bienvenue Antoine, votre password est : {pwd}";
+                        return $"Bienvenue Antoine, votre password est : {login[1]} et le token app est : {login[2]}";
                     }
 
                 default:
                     {
-                        return $"Login inconnu, peut être vous êtes vous trompé ? Votre password est : {pwd}";
+                        return $"Login inconnu, peut être vous êtes vous trompé ? Votre password est : {login[1]} et le token app est : {login[2]}";
                     }
             }
 
