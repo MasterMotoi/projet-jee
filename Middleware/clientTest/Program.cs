@@ -15,12 +15,17 @@ namespace clientTest
 
         static void Main(string[] args)
         {
-            EndpointAddress epServ = new EndpointAddress("http://localhost:8010/Server/services/server");
+            EndpointAddress epServ = new EndpointAddress("net.tcp://localhost:8020/Server/services/server");
+            NetTcpBinding binding = new NetTcpBinding();
             model.MsgStruct msg = new model.MsgStruct();
             model.MsgStruct returnMsg = new model.MsgStruct();
             try
-            { 
-                servC.I_Server proxyServC = ChannelFactory<servC.I_Server >.CreateChannel(new BasicHttpBinding(), epServ);
+            {
+                //servC.I_Server proxyServC = ChannelFactory<servC.I_Server >.CreateChannel(new BasicHttpBinding(), epServ);
+                ChannelFactory<servC.I_Server> channelFactory = new ChannelFactory<servC.I_Server>(binding, epServ);
+                servC.I_Server _clientProxy = channelFactory.CreateChannel();
+                
+
                 Console.WriteLine("calling server");
                 //msg.statutOp = null;
                 msg.info = "auth_request";
@@ -30,7 +35,7 @@ namespace clientTest
                 msg.operationVersion = "1.0";
                 msg.operationName ="auth";
                 msg.data = new object[3] { (object)"login", (object)"password",(object)"123456" };
-                returnMsg = proxyServC.server(msg);
+                returnMsg = _clientProxy.server(msg);
                 Console.WriteLine("Server call finished");
                 Console.WriteLine(returnMsg.info);
             }
