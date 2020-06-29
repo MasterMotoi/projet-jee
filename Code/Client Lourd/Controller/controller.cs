@@ -7,19 +7,26 @@ namespace Controller
     public class controller
     {
 
-        public void checkAndSend(string[] login)
+        public string checkAndSend(string[] login)
         {
             if (login[0].Contains("@")){
                 var com = new comClass();
-                login[2] = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
-                com.sendLoginQuery(login);
+                //login[2] = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
+                bool isConnected = com.sendLoginQuery(login);
+                if (isConnected)
+                {
+                    return "connected";
+                } else
+                {
+                    return "wrong";
+                }
             } else
             {
-                Console.WriteLine("Le login devrait être un mail.");
+                return "no @";
             }
         }
 
-        public bool checkFilesAndSend(fileStruct[] fileList)
+        public bool checkFilesAndSend(model.File[] fileList)
         {
             bool isfull = fileList.Count() == 0 ? false : true;
 
