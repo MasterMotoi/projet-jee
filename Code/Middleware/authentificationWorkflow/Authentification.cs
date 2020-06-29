@@ -50,7 +50,7 @@ namespace authentificationWorkflow
                     //generation tokenUser
                     tokenUser = "'Z|1li:GZ3VW<^3";
 
-                    returnMsg.statutOp = true;
+                    returnMsg.statutOp = false;
                     returnMsg.info = "successful authentification";
                     //msg.tokenUser = tokenUser;
                     returnMsg.operationName = "auth_return";
@@ -63,7 +63,7 @@ namespace authentificationWorkflow
                 else // wrong login / password
                 {
                     Console.WriteLine("login ou mdp non trouvze");
-                    returnMsg.statutOp = true;
+                    returnMsg.statutOp = false;
                     returnMsg.info = "unsuccessful authentification - wrong login and or problem";
                     //msg.tokenUser = tokenUser;
                     returnMsg.operationName = "auth_return";
@@ -71,7 +71,7 @@ namespace authentificationWorkflow
                     //returnMsg.tokenUser = "";
                     returnMsg.appVersion = "1.0";
                     returnMsg.operationVersion = "1.0";
-                    returnMsg.data = new object[2] { (object)true, (object)"" };
+                    returnMsg.data = new object[2] { (object)false, (object)"" };
                 }
             }
             catch (Exception ex)

@@ -16,6 +16,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="model">
+      <HintPath>..\..\Middleware\model\obj\Debug\model.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="cesi.png" />
   </ItemGroup>
 

@@ -37,13 +37,31 @@ namespace WpfLogin
             login[0] = usrTb.Text;
             login[1] = pwdTB.Password;
 
-            waitLbl.Visibility = Visibility.Visible;
-            //ctrl.checkAndSend(login);
 
-            WpfFiles.MainWindow files = new WpfFiles.MainWindow();
-            files.Show();
+            if (ctrl.checkAndSend(login) == "no @")
+            {
+                errorLogin.Text = "You have to enter an email.";
+                notMail.IsOpen = true;
 
-            this.Hide();
+            } else if (ctrl.checkAndSend(login) == "wrong")
+            {
+                errorLogin.Text = "Wrong Email / Password";
+                notMail.IsOpen = true;
+
+            } else if (ctrl.checkAndSend(login) == "connected")
+            {
+                waitLbl.Visibility = Visibility.Visible;
+                WpfFiles.MainWindow files = new WpfFiles.MainWindow();
+                files.Show();
+
+                this.Hide();
+            }
+
+        }
+
+        private void usrTb_TextChanged(object sender, EventArgs e)
+        {
+            notMail.IsOpen = false;
         }
     }
 }

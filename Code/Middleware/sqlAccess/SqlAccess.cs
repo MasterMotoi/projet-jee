@@ -57,9 +57,9 @@ namespace sqlAccess
 
         public User[] getUserBy2ParametersValue(string parameter, string value, string parameter2, string value2)
         {
-            SqlConnection sqlCon = new SqlConnection(@"Data Source=(local)\sqlexpress;Initial Catalog=user;Integrated Security=True;");
+            SqlConnection sqlCon = new SqlConnection(@"Data Source=(local)\sqlexpress;Initial Catalog=client;Integrated Security=True;");
             List<User> users = new List<User>();
-            SqlDataAdapter sqlda = new SqlDataAdapter("Select * from [client] WHERE " + parameter + "= '" + value + "' AND " + parameter2 + "= '" + value2 + "'", sqlCon);
+            SqlDataAdapter sqlda = new SqlDataAdapter("Select * from [user] WHERE " + parameter + "= '" + value + "' AND " + parameter2 + "= '" + value2 + "'", sqlCon);
             DataTable dtbl = new DataTable();
 
             sqlda.Fill(dtbl);

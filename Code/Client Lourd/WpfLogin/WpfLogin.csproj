@@ -16,6 +16,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="model">
+      <HintPath>..\..\Middleware\model\obj\Debug\model.dll</HintPath>
+    </Reference>
+    <Reference Include="servC">
+      <HintPath>..\..\Middleware\servC\obj\Debug\servC.exe</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="cesi.png" />
   </ItemGroup>
 

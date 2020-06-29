@@ -18,6 +18,7 @@ using com;
 using System.IO;
 using System.Threading;
 using System.Windows.Controls.Primitives;
+using model;
 
 namespace WpfFiles
 {
@@ -57,19 +58,19 @@ namespace WpfFiles
 
         private void sendBtn_Click(object sender, RoutedEventArgs e)
         {
-            fileStruct[] files = new fileStruct[filenamesLb.Items.Count];
+            model.File[] files = new model.File[filenamesLb.Items.Count];
             int i = 0;
             controller ctrl = new controller();
 
 
             foreach (string filename in filenamesLb.Items)
             {
-                fileStruct fileObj = new fileStruct();
+                model.File fileObj = new model.File();
 
                 string[] justName = filename.Split("\\");
                 fileObj.name = justName[justName.Count() - 1];
 
-                fileObj.content = File.ReadAllText(filename);
+                fileObj.data = System.IO.File.ReadAllText(filename);
 
                 files[i] = fileObj;
                 i++;            
