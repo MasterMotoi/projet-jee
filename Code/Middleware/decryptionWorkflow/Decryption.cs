@@ -6,6 +6,8 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using model;
+using System.ServiceModel;
 
 namespace decryptionWorkflow
 {

@@ -58,27 +58,34 @@ namespace WpfFiles
 
         private void sendBtn_Click(object sender, RoutedEventArgs e)
         {
-            model.File[] files = new model.File[filenamesLb.Items.Count];
+            //model.File[] files = new model.File[filenamesLb.Items.Count];
             int i = 0;
             controller ctrl = new controller();
+            String[] jaggedFiles = new String[filenamesLb.Items.Count];
 
 
             foreach (string filename in filenamesLb.Items)
             {
-                model.File fileObj = new model.File();
+                //model.File fileObj = new model.File();
 
                 string[] justName = filename.Split("\\");
-                fileObj.name = justName[justName.Count() - 1];
+                /*fileObj.name = justName[justName.Count() - 1];
 
                 fileObj.data = System.IO.File.ReadAllText(filename);
 
-                files[i] = fileObj;
+                fileObj.fileType = ".txt";*/
+                //files[i] = fileObj;
+
+                jaggedFiles[i] = $"{justName[justName.Count() - 1]}|{System.IO.File.ReadAllText(filename)}";
+
+                string[] s = jaggedFiles[i].Split(new char[] { '|' }, 2);
+
                 i++;            
             }
 
             filenamesLb.Items.Clear();
 
-            if (ctrl.checkFilesAndSend(files) == false)
+            if (ctrl.checkFilesAndSend(jaggedFiles) == false)
             {
                 emptyList.IsOpen = true;
             }
