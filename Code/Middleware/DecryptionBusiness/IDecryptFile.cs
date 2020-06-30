@@ -12,9 +12,12 @@ namespace decryptionBusiness
     [ServiceContract(Namespace = "http:middleware")]
     public interface IDecryptFile
     {
+        /*
         [OperationContract]
-        //SampleFile ()
-        model.File decryptFile(model.File file, string key);
+        void SetFileAndKey(model.File file, string key);*/
+
+        [OperationContract]
+        void decryptFile(model.File file, string key);
 
     }
 }

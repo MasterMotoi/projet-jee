@@ -16,6 +16,8 @@ namespace servC
         {
             //ServiceHost authentificationServiceHost = new ServiceHost(typeof(authentifcationService.authentifcationService));
             ServiceHost authentificationWorkflowHost = new ServiceHost(typeof(authentificationWorkflow.Authentification));
+            ServiceHost decryptionWorkflowHost = new ServiceHost(typeof(decryptionWorkflow.Decryption));
+            ServiceHost decryptionBusinessHost = new ServiceHost(typeof(decryptionBusiness.DecryptFile));
             ServiceHost workflowControllerHost = new ServiceHost(typeof(workflowController.WorkflowController));
             ServiceHost sqlAccessHost = new ServiceHost(typeof(sqlAccess.SqlAccess));
             ServiceHost serverHost = new ServiceHost(typeof(servC.Server));
@@ -26,6 +28,8 @@ namespace servC
                 authentificationWorkflowHost.Open();
                 workflowControllerHost.Open();
                 sqlAccessHost.Open();
+                decryptionWorkflowHost.Open();
+                decryptionBusinessHost.Open();
                 serverHost.Open();
                 Console.WriteLine("The service is ready.");
 
