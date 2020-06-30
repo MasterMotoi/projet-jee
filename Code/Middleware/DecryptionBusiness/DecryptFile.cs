@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using model;
 
@@ -22,6 +23,7 @@ namespace decryptionBusiness
         {
             Console.WriteLine("On entre un thread");
             Console.WriteLine(file.data);
+            //Thread.Sleep(5000);
             Console.WriteLine(key);
             model.File decryptedFile = new model.File();
             int i = 0;
@@ -59,7 +61,8 @@ namespace decryptionBusiness
         {
             DecryptFile businessDecrypter = new DecryptFile();
             businessDecrypter.SetFileAndKey(file, key);
-            businessDecrypter.decryptThread();
+            Thread InstanceCaller = new Thread(new ThreadStart(businessDecrypter.decryptThread));
+            InstanceCaller.Start();
         }
     }
 }
