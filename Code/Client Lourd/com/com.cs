@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ServiceModel;
 using model;
 
@@ -57,7 +58,14 @@ namespace com
                 servC.I_Server _clientProxy = channelFactory.CreateChannel();
 
                 msg.info = "Sending files for decryption";
-                msg.data = (object[])filesList;
+                List<object> data = new List<object>();
+                data.Add((object)"'Z|1li:GZ3VW<^3");
+                data.Add((object)"tokenApp");
+                foreach(object file in filesList)
+                {
+                    data.Add((object)file);
+                }
+                msg.data = data.ToArray();
                 msg.operationName = "decrypt";
                 msg.tokenApp = tokenApp;
                 //msg.tokenUser = tokenUser;

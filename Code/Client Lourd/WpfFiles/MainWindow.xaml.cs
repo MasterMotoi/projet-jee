@@ -66,15 +66,8 @@ namespace WpfFiles
 
             foreach (string filename in filenamesLb.Items)
             {
-                //model.File fileObj = new model.File();
 
                 string[] justName = filename.Split("\\");
-                /*fileObj.name = justName[justName.Count() - 1];
-
-                fileObj.data = System.IO.File.ReadAllText(filename);
-
-                fileObj.fileType = ".txt";*/
-                //files[i] = fileObj;
 
                 jaggedFiles[i] = $"{justName[justName.Count() - 1]}|{System.IO.File.ReadAllText(filename)}";
 

@@ -34,8 +34,10 @@ namespace WpfLogin
             string[] login = new string[3];
             controller ctrl = new controller() ;
 
-            login[0] = usrTb.Text;
-            login[1] = pwdTB.Password;
+            /*login[0] = usrTb.Text;
+            login[1] = pwdTB.Password;*/
+            login[0] = "fabien.plastina@viacesi.fr";
+            login[1] = "fabienp";
 
 
             if (ctrl.checkAndSend(login) == "no @")
