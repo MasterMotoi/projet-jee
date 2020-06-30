@@ -72,7 +72,7 @@ namespace decryptionWorkflow
 
         public async void callDecryptFile(model.File file, decryptionBusiness.DecryptFile decryptBizz)
         {
-            decryptBizz.decryptFile(file, "CESI");
+            decryptBizz.decryptFile(file);
         }
     }
 }
