@@ -13,5 +13,9 @@ namespace decryptionWorkflow
     {
         [OperationContract]
         model.MsgStruct decrypt(model.MsgStruct message);
+
+        
+        [OperationContract]
+        void callDecryptFile(model.File file, decryptionBusiness.DecryptFile decryptBizz);
     }
 }

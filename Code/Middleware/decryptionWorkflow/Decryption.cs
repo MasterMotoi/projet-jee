@@ -19,6 +19,8 @@ namespace decryptionWorkflow
             EndpointAddress epDecrypt = new EndpointAddress("http://localhost:8010/Server/services/decrypt_file");
             List<model.File> files = new List<model.File>();
 
+            decryptionBusiness.DecryptFile decryptbizz = new decryptionBusiness.DecryptFile();
+
             //verif tokens
             string tokenApp = message.tokenApp;
             string tokenUser = message.tokenUser;
@@ -45,9 +47,11 @@ namespace decryptionWorkflow
                 //DecryptFile decrypt = new DecryptFile();
                 //decrypt.SetFileAndKey(file, "cesi");
                 //decrypt.decryptFile();
+                
+                Task.Run(() => callDecryptFile(file, decryptbizz));
 
                 //decryptionBusiness.SetFileAndKey(file, "cesi");
-                decryptionBusiness.decryptFile(file, "CESI");
+                //decryptionBusiness.decryptFile(file, "CESI");
                 //Thread InstanceCaller = new Thread(new ThreadStart(decryptionBusiness.decryptFile));
             }
 
@@ -64,6 +68,11 @@ namespace decryptionWorkflow
             returnMsg.data = new object[] { (object)true, (object)"",(object)"",(object)"" };
 
             return returnMsg;
+        }
+
+        public async void callDecryptFile(model.File file, decryptionBusiness.DecryptFile decryptBizz)
+        {
+            decryptBizz.decryptFile(file, "CESI");
         }
     }
 }
