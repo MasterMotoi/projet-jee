@@ -74,10 +74,6 @@
       <Project>{cc31ccb4-96e6-44a6-9755-6bd464072457}</Project>
       <Name>sqlAccess</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WcfService\WcfService.csproj">
-      <Project>{8799b4ac-a0b4-4a4f-a41f-1b681931931d}</Project>
-      <Name>WcfService</Name>
-    </ProjectReference>
     <ProjectReference Include="..\workflowController\workflowController.csproj">
       <Project>{d85b7248-6c43-4f81-b3cf-b913af621233}</Project>
       <Name>workflowController</Name>

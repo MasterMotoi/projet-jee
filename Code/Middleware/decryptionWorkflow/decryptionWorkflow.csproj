@@ -47,6 +47,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DecryptionBusiness\decryptionBusiness.csproj">
+      <Project>{ed7f60ee-24ce-4b9c-aff5-e138c248232d}</Project>
+      <Name>decryptionBusiness</Name>
+    </ProjectReference>
     <ProjectReference Include="..\model\model.csproj">
       <Project>{bacbc0b0-d718-4022-8131-ae5379b00c94}</Project>
       <Name>model</Name>
