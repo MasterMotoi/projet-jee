@@ -1,0 +1,6 @@
+fish\payara\wsJax\WsJax.class
+fish\payara\jee\Recept.class
+fish\payara\jee\resources\JavaEE8Resource.class
+fish\payara\jee\JAXRSConfiguration.class
+fish\payara\jee\receptValidator.class
+fish\payara\jee\Mot.class

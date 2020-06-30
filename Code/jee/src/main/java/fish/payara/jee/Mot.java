@@ -7,15 +7,21 @@ package fish.payara.jee;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
+
 
 /**
  *
@@ -44,7 +50,16 @@ public class Mot implements Serializable {
 
     public Mot() {
     }
-
+    
+    public List<Mot> findMot(String motToFind)
+    {
+        Query query = em.createNamedQuery("Mot.findByMot");
+        query.setParameter("mot", motToFind);
+        
+        return query.getResultList();
+    }
+    @PersistenceContext(unitName = "my_persistence_unit")
+    private EntityManager em;
     public Mot(BigDecimal id) {
         this.id = id;
     }
