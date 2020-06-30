@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using model;
+using System.ServiceModel;
 
 namespace decryptionWorkflow
 {
-    public class Decryption
+    public class Decryption : IDecryption
     {
-        model.MsgStruct decrypt(model.MsgStruct message)
+        public model.MsgStruct decrypt(model.MsgStruct message)
         {
             model.MsgStruct returnMsg = new model.MsgStruct();
             //EndpointAddress epSql = new EndpointAddress("http://localhost:8010/Server/services/sql_access");
