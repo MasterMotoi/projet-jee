@@ -9,14 +9,14 @@ using System.ServiceModel;
 
 namespace decryptionBusiness
 {
-    [ServiceContract(Namespace = "http:middleware")]
+    //[ServiceContract(Namespace = "http:middleware")]
     public interface IDecryptFile
     {
-        /*
-        [OperationContract]
-        void SetFileAndKey(model.File file, string key);*/
+        void SetFileAndKey(model.File file);
 
-        [OperationContract]
+        void decryptFilewithKey(model.File file, string key);
+
+        //[OperationContract]
         void decryptFile(model.File file);
 
     }

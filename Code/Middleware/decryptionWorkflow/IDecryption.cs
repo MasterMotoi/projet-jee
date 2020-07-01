@@ -8,14 +8,13 @@ using model;
 
 namespace decryptionWorkflow
 {
-    [ServiceContract(Namespace = "http:middleware")]
+    //[ServiceContract(Namespace = "http:middleware")]
     public interface IDecryption
     {
-        [OperationContract]
-        model.MsgStruct decrypt(model.MsgStruct message);
+        //[OperationContract]
+        void decrypt(model.MsgStruct message);
 
-        
-        [OperationContract]
+        //[OperationContract]
         void callDecryptFile(model.File file, decryptionBusiness.DecryptFile decryptBizz);
     }
 }

@@ -13,10 +13,10 @@ namespace decryptionWorkflow
 {
     public class Decryption : IDecryption
     {
-        public model.MsgStruct decrypt(model.MsgStruct message)
+        public void decrypt(model.MsgStruct message)
         {
             model.MsgStruct returnMsg = new model.MsgStruct();
-            EndpointAddress epDecrypt = new EndpointAddress("http://localhost:8010/Server/services/decrypt_file");
+            //EndpointAddress epDecrypt = new EndpointAddress("http://localhost:8010/Server/services/decrypt_file");
             List<model.File> files = new List<model.File>();
 
             decryptionBusiness.DecryptFile decryptbizz = new decryptionBusiness.DecryptFile();
@@ -39,9 +39,10 @@ namespace decryptionWorkflow
             }
 
             //thread
-            decryptionBusiness.IDecryptFile decryptionBusiness= ChannelFactory<decryptionBusiness.IDecryptFile>.CreateChannel(new BasicHttpBinding(), epDecrypt);
+            //decryptionBusiness.IDecryptFile decryptionBusiness= ChannelFactory<decryptionBusiness.IDecryptFile>.CreateChannel(new BasicHttpBinding(), epDecrypt);
+            //decryptionBusiness.DecryptFile decryptionBusiness = new DecryptFile();
 
-            foreach(model.File file in files.ToArray() )
+            foreach (model.File file in files.ToArray() )
             {
                 //decryptionWorkflow.
                 //DecryptFile decrypt = new DecryptFile();
@@ -56,18 +57,17 @@ namespace decryptionWorkflow
             }
 
 
-
+            /*
             returnMsg.statutOp = false;
             returnMsg.info = "successful decryption";
-            //msg.tokenUser = tokenUser;
             returnMsg.operationName = "decrypt_return";
             returnMsg.tokenApp = "MiddlewareToken";
             returnMsg.tokenUser = "'Z|1li:GZ3VW<^3";
             returnMsg.appVersion = "1.0";
             returnMsg.operationVersion = "1.0";
-            returnMsg.data = new object[] { (object)true, (object)"",(object)"",(object)"" };
+            returnMsg.data = new object[] { (object)true, (object)"",(object)"",(object)"" };*/
 
-            return returnMsg;
+            //return returnMsg;
         }
 
         public async void callDecryptFile(model.File file, decryptionBusiness.DecryptFile decryptBizz)
