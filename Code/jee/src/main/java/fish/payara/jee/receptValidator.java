@@ -30,7 +30,11 @@ public class receptValidator {
         
         float division = (float)motsFrancais/split.length;
         float tauxConfiance = division * 100;
-        System.out.println("Fichier vérifié avec "+ tauxConfiance + "% de taux de confiance");
+        System.out.println("Fichier vérifié avec "+ tauxConfiance + "% de taux de confiance, et la clé :" + recept.getCurrentKey() + " dans le fichier : " + recept.getFileName());
+        if (tauxConfiance <= 80)
+        {
+            System.out.println("le message secret est" + recept.getFileContent());
+        }
         
     }
 }
