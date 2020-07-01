@@ -13,7 +13,7 @@ namespace decryptionWorkflow
 {
     public class Decryption : IDecryption
     {
-        public void decrypt(model.MsgStruct message)
+        public model.MsgStruct decrypt(model.MsgStruct message)
         {
             model.MsgStruct returnMsg = new model.MsgStruct();
             //EndpointAddress epDecrypt = new EndpointAddress("http://localhost:8010/Server/services/decrypt_file");
@@ -21,11 +21,22 @@ namespace decryptionWorkflow
 
             decryptionBusiness.DecryptFile decryptbizz = new decryptionBusiness.DecryptFile();
 
-            //verif tokens
+            
             string tokenApp = message.tokenApp;
             string tokenUser = message.tokenUser;
             int fileNumber = message.data.Length - 2;
             
+            if (tokenUser != "'Z|1li:GZ3VW<^3")
+            {
+                returnMsg.statutOp = false;
+                returnMsg.info = "invalid tokenUser";
+                returnMsg.operationName = "decrypt_return";
+                returnMsg.tokenApp = "?h:XPjO9b)z3Ox7";
+                returnMsg.tokenUser = "'Z|1li:GZ3VW<^3";
+                returnMsg.appVersion = "1.0";
+                returnMsg.operationVersion = "1.0";
+                return returnMsg;
+            }
 
             for(int i =2;i< message.data.Length;i++)
             {
@@ -47,9 +58,13 @@ namespace decryptionWorkflow
                 //decryptionWorkflow.
                 //DecryptFile decrypt = new DecryptFile();
                 //decrypt.SetFileAndKey(file, "cesi");
-                //decrypt.decryptFile();
-                
-                Task.Run(() => callDecryptFile(file, decryptbizz));
+                //decrypt.decryptFile(file);
+                DecryptFile businessDecrypter = new DecryptFile();
+                businessDecrypter.SetFileAndKey(file);
+                Thread InstanceCaller = new Thread(new ThreadStart(businessDecrypter.decryptThread));
+                InstanceCaller.Start();
+
+                //Task.Run(() => callDecryptFile(file, decryptbizz));
 
                 //decryptionBusiness.SetFileAndKey(file, "cesi");
                 //decryptionBusiness.decryptFile(file, "CESI");
@@ -57,7 +72,7 @@ namespace decryptionWorkflow
             }
 
 
-            /*
+            
             returnMsg.statutOp = false;
             returnMsg.info = "successful decryption";
             returnMsg.operationName = "decrypt_return";
@@ -65,9 +80,10 @@ namespace decryptionWorkflow
             returnMsg.tokenUser = "'Z|1li:GZ3VW<^3";
             returnMsg.appVersion = "1.0";
             returnMsg.operationVersion = "1.0";
-            returnMsg.data = new object[] { (object)true, (object)"",(object)"",(object)"" };*/
+            returnMsg.data = new object[] { (object)true, (object)"",(object)"",(object)"" };
 
-            //return returnMsg;
+            return returnMsg;
+            //return null;
         }
 
         public async void callDecryptFile(model.File file, decryptionBusiness.DecryptFile decryptBizz)

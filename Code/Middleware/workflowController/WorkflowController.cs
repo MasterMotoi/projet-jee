@@ -53,7 +53,7 @@ namespace workflowController
                             //decryptionWorkflow.IDecryption decryptionWorkflow = ChannelFactory<decryptionWorkflow.IDecryption>.CreateChannel(new BasicHttpBinding(), epDecrypt);
                             decryptionWorkflow.Decryption decryptionWorkflow = new decryptionWorkflow.Decryption();
                             Console.WriteLine("calling Decrypt CW");
-                            decryptionWorkflow.decrypt(message);
+                            returnMsg = decryptionWorkflow.decrypt(message);
                             Console.WriteLine("Decrypt CW call finished");
                             break;
                         default: //retourne message indiquant que le type d'appversion est inconnu

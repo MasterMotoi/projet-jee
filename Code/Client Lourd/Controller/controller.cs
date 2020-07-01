@@ -12,31 +12,25 @@ namespace Controller
             if (login[0].Contains("@")){
                 var com = new comClass();
                 //login[2] = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
-                bool isConnected = com.sendLoginQuery(login);
-                if (isConnected)
-                {
-                    return "connected";
-                } else
-                {
-                    return "wrong";
-                }
+                string msgBack = com.sendLoginQuery(login);
+                return msgBack;
             } else
             {
                 return "no @";
             }
         }
 
-        public bool checkFilesAndSend(String[] fileList)
+        public String checkFilesAndSend(String[] fileList)
         {
             bool isfull = fileList.Count() == 0 ? false : true;
 
             if (isfull) {
                 var com = new comClass();
-                com.sendFilesQuery(fileList);
-                return true;
+                string msgBack = com.sendFilesQuery(fileList);
+                return msgBack;
             } else
             {
-                return false;
+                return "noFiles";
             }
         }
     }

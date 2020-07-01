@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -34,23 +35,33 @@ namespace WpfLogin
             string[] login = new string[3];
             controller ctrl = new controller() ;
 
-            /*login[0] = usrTb.Text;
-            login[1] = pwdTB.Password;*/
-            login[0] = "fabien.plastina@viacesi.fr";
-            login[1] = "fabienp";
+            login[0] = usrTb.Text;
+            login[1] = pwdTB.Password;
 
+            string msgBack = ctrl.checkAndSend(login);
 
-            if (ctrl.checkAndSend(login) == "no @")
+            if (msgBack == "@")
             {
                 errorLogin.Text = "You have to enter an email.";
                 notMail.IsOpen = true;
-
-            } else if (ctrl.checkAndSend(login) == "wrong")
+            }
+            else if (msgBack == "wrong login")
             {
                 errorLogin.Text = "Wrong Email / Password";
                 notMail.IsOpen = true;
+            }
+            else if (msgBack == "invalid tokenApp")
+            {
+                errorLogin.Text = "invalid token";
+                notMail.IsOpen = true;
+                Trace.WriteLine("token nul");
+            }
+            else if (msgBack == "Error")
+            {
+                errorLogin.Text = "Error when sending the login";
+                notMail.IsOpen = true;
 
-            } else if (ctrl.checkAndSend(login) == "connected")
+            } else if (msgBack == "successful authentification")
             {
                 waitLbl.Visibility = Visibility.Visible;
                 WpfFiles.MainWindow files = new WpfFiles.MainWindow();

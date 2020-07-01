@@ -92,6 +92,7 @@ namespace decryptionBusiness
             
         }
 
+        // a utiliser si la classe est heberge en tant que service
         public void decryptFile(model.File file)
         {
             DecryptFile businessDecrypter = new DecryptFile();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.ServiceModel;
 using model;
 
@@ -10,7 +11,7 @@ namespace com
         private string tokenApp = "?h:XPjO9b)z3Ox7";
         private string tokenUser = "";
 
-        public bool sendLoginQuery (string[] login)
+        public string sendLoginQuery (string[] login)
         {
             //var client = new ServiceReference1.Service1Client();
             
@@ -34,16 +35,16 @@ namespace com
                 msg.tokenApp = tokenApp;
                 msgBack = _clientProxy.server(msg);
                 tokenUser = msgBack.tokenUser;
-                return (bool)msgBack.data[0];
+                return msgBack.info;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return false;
+                return "error";
             }
         }
 
-        public void sendFilesQuery(String[] filesList)
+        public string sendFilesQuery(String[] filesList)
         {
             model.MsgStruct msg = new model.MsgStruct();
            
@@ -60,7 +61,7 @@ namespace com
                 msg.info = "Sending files for decryption";
                 List<object> data = new List<object>();
                 data.Add((object)"'Z|1li:GZ3VW<^3");
-                data.Add((object)"tokenApp");
+                data.Add((object) tokenApp);
                 foreach(object file in filesList)
                 {
                     data.Add((object)file);
@@ -71,13 +72,15 @@ namespace com
                 //msg.tokenUser = tokenUser;
                 msg.tokenUser = "'Z|1li:GZ3VW<^3";
                 msgBack = _clientProxy.server(msg);
+               
                 Console.ReadLine();
+                return msgBack.info;
                 //return (bool)msgBack.data[0];
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                //return false;
+                return "error com";
             }
         }
 

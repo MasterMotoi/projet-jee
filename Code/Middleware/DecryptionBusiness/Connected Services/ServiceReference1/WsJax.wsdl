@@ -5,31 +5,31 @@
       <xsd:import schemaLocation="http://192.168.43.211:8080/WsJax/WsJax?xsd=1" namespace="http://wsJax.payara.fish/" />
     </xsd:schema>
   </types>
-  <message name="sendCurrentFile">
-    <part name="parameters" element="tns:sendCurrentFile" />
-  </message>
-  <message name="sendCurrentFileResponse">
-    <part name="parameters" element="tns:sendCurrentFileResponse" />
-  </message>
   <message name="sendJMSMessage">
     <part name="parameters" element="tns:sendJMSMessage" />
   </message>
   <message name="sendJMSMessageResponse">
     <part name="parameters" element="tns:sendJMSMessageResponse" />
   </message>
+  <message name="sendCurrentFile">
+    <part name="parameters" element="tns:sendCurrentFile" />
+  </message>
+  <message name="sendCurrentFileResponse">
+    <part name="parameters" element="tns:sendCurrentFileResponse" />
+  </message>
   <portType name="WsJax">
-    <operation name="sendCurrentFile">
-      <input wsam:Action="http://wsJax.payara.fish/WsJax/sendCurrentFileRequest" message="tns:sendCurrentFile" />
-      <output wsam:Action="http://wsJax.payara.fish/WsJax/sendCurrentFileResponse" message="tns:sendCurrentFileResponse" />
-    </operation>
     <operation name="sendJMSMessage">
       <input wsam:Action="http://wsJax.payara.fish/WsJax/sendJMSMessageRequest" message="tns:sendJMSMessage" />
       <output wsam:Action="http://wsJax.payara.fish/WsJax/sendJMSMessageResponse" message="tns:sendJMSMessageResponse" />
     </operation>
+    <operation name="sendCurrentFile">
+      <input wsam:Action="http://wsJax.payara.fish/WsJax/sendCurrentFileRequest" message="tns:sendCurrentFile" />
+      <output wsam:Action="http://wsJax.payara.fish/WsJax/sendCurrentFileResponse" message="tns:sendCurrentFileResponse" />
+    </operation>
   </portType>
   <binding name="WsJaxPortBinding" type="tns:WsJax">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="sendCurrentFile">
+    <operation name="sendJMSMessage">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -38,7 +38,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="sendJMSMessage">
+    <operation name="sendCurrentFile">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

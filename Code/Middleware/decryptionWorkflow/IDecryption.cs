@@ -12,7 +12,7 @@ namespace decryptionWorkflow
     public interface IDecryption
     {
         //[OperationContract]
-        void decrypt(model.MsgStruct message);
+        model.MsgStruct decrypt(model.MsgStruct message);
 
         //[OperationContract]
         void callDecryptFile(model.File file, decryptionBusiness.DecryptFile decryptBizz);

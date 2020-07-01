@@ -44,7 +44,7 @@ namespace servC
             else
             {
                 //on renvoit un message informant le client que son token app n'est ps valide
-                returnMsg.info = "unsuccessful authentification - unknow tokenApp";
+                returnMsg.info = "invalid tokenApp";
                 returnMsg.operationName = "return";
                 returnMsg.data = new object[2] { (object)false, (object)"unknow appVersion" };
             }
