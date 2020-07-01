@@ -14,7 +14,7 @@ namespace servC
 
         public model.MsgStruct server (model.MsgStruct message)
         {
-            EndpointAddress epCAM = new EndpointAddress("http://localhost:8010/Server/services/workflow_controller");
+            //EndpointAddress epCAM = new EndpointAddress("http://localhost:8010/Server/services/workflow_controller");
             model.MsgStruct returnMsg = new model.MsgStruct();
 
             string operationName = message.operationName;
@@ -25,7 +25,8 @@ namespace servC
             {                
                 try
                 {
-                    workflowController.I_WorkflowController proxyWorkflowController = ChannelFactory<workflowController.I_WorkflowController>.CreateChannel(new BasicHttpBinding(), epCAM);
+                    //workflowController.I_WorkflowController proxyWorkflowController = ChannelFactory<workflowController.I_WorkflowController>.CreateChannel(new BasicHttpBinding(), epCAM);
+                    workflowController.WorkflowController proxyWorkflowController = new WorkflowController();
                     Console.WriteLine("calling CAM");
                     returnMsg = proxyWorkflowController.workflowControl(message);
                     Console.WriteLine("CAM call finished");

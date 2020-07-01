@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1169
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "authentifcationService", "authentifcationService\authentifcationService.csproj", "{91A39960-DE41-4AD3-A492-15E63A476853}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "authentificationWorkflow", "authentificationWorkflow\authentificationWorkflow.csproj", "{5BE2D795-55C4-4F0A-970B-202D1DF9B3F6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "workflowController", "workflowController\workflowController.csproj", "{D85B7248-6C43-4F81-B3CF-B913AF621233}"
@@ -29,10 +27,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{91A39960-DE41-4AD3-A492-15E63A476853}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{91A39960-DE41-4AD3-A492-15E63A476853}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{91A39960-DE41-4AD3-A492-15E63A476853}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{91A39960-DE41-4AD3-A492-15E63A476853}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5BE2D795-55C4-4F0A-970B-202D1DF9B3F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5BE2D795-55C4-4F0A-970B-202D1DF9B3F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BE2D795-55C4-4F0A-970B-202D1DF9B3F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
