@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -30,7 +31,6 @@ namespace decryptionBusiness
             while (char1 <= 90)
             {
                 key = $"{Convert.ToChar(char1)}{Convert.ToChar(char2)}{Convert.ToChar(char3)}{Convert.ToChar(char4)}";
-                //traitement
                 decryptFilewithKey(file, key);
                 char4++;
                 if (char4 > 90)
@@ -87,7 +87,16 @@ namespace decryptionBusiness
             Console.WriteLine("Cle :");
             Console.WriteLine(key);
             Console.WriteLine("Decryption :");
-            Console.WriteLine(decryptedFile.data);
+            Trace.WriteLine(decryptedFile.data);
+            Trace.WriteLine("Fichier :");
+            Trace.WriteLine(file.name);
+            Trace.WriteLine("Cle :");
+            Trace.WriteLine(key);
+            Trace.WriteLine("Decryption :");
+            Trace.WriteLine(decryptedFile.data);
+            Trace.WriteLine(""); 
+            Trace.WriteLine("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+            Trace.WriteLine("");
 
             //envoie fichier au JMS
 
