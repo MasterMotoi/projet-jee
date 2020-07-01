@@ -32,11 +32,6 @@ namespace WpfFiles
             InitializeComponent();
         }
 
-        public void startWindow()
-        {
-            InitializeComponent();
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             emptyList.IsOpen = false;
@@ -71,7 +66,16 @@ namespace WpfFiles
 
                 jaggedFiles[i] = $"{justName[justName.Count() - 1]}|{System.IO.File.ReadAllText(filename)}";
 
-                string[] s = jaggedFiles[i].Split(new char[] { '|' }, 2);
+
+                /*jaggedFiles[i] = $"{justName[justName.Count() - 1]}|";
+
+                byte[] inbyte = System.IO.File.ReadAllBytes(filename);
+
+                foreach (byte bit in inbyte)
+                {
+                    jaggedFiles[i] = $"{jaggedFiles[i]}{Convert.ToChar(bit)}";
+                    Trace.WriteLine(jaggedFiles[i]);
+                }*/
 
                 i++;            
             }

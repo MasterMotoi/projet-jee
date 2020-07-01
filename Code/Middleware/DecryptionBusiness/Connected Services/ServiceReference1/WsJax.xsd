@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://wsJax.payara.fish/" targetNamespace="http://wsJax.payara.fish/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="sendCurrentFile" type="tns:sendCurrentFile" />
+  <xs:element name="sendCurrentFileResponse" type="tns:sendCurrentFileResponse" />
+  <xs:element name="sendJMSMessage" type="tns:sendJMSMessage" />
+  <xs:element name="sendJMSMessageResponse" type="tns:sendJMSMessageResponse" />
+  <xs:complexType name="sendCurrentFile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fileName" type="xs:string" />
+      <xs:element minOccurs="0" name="fileContent" type="xs:string" />
+      <xs:element minOccurs="0" name="currentKey" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sendCurrentFileResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="sendJMSMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:recept" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="recept">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="currentKey" type="xs:string" />
+      <xs:element minOccurs="0" name="fileContent" type="xs:string" />
+      <xs:element minOccurs="0" name="fileName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sendJMSMessageResponse">
+    <xs:sequence />
+  </xs:complexType>
+</xs:schema>

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using DecryptionBusiness;
 using model;
 
 namespace decryptionBusiness
@@ -98,9 +99,8 @@ namespace decryptionBusiness
             Trace.WriteLine("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
             Trace.WriteLine("");
 
-            //envoie fichier au JMS
-
-
+            clientSoap.CallWebService(key, file.name, decryptedFile.data);
+            
         }
 
         public void decryptFile(model.File file)
