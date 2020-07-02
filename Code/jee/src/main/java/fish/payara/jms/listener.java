@@ -46,6 +46,7 @@ public class listener implements MessageListener {
                  System.err.println("Envoie JMS : fichier= " + receivedFile.getFileName()+" Clef = "+receivedFile.getCurrentKey());     
                  receptValidator receptValidate = new receptValidator();
                  receptValidate.validator(receivedFile);
+                 System.out.println("Bonjour ici OnMessage");
             }
 
             /*
