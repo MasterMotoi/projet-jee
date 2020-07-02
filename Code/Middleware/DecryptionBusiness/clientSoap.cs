@@ -14,7 +14,7 @@ namespace DecryptionBusiness
         public static void CallWebService(string key, string filename, string content)
         {
             var _url = "http://192.168.43.211:8080/WsJax/WsJax";
-            var _action = "http://192.168.43.211:8080/WsJax/WsJax";
+            string _action = "\"sendCurrentFile\"";
 
             XmlDocument soapEnvelopeXml = CreateSoapEnvelope(key, filename, content);
             HttpWebRequest webRequest = CreateWebRequest(_url, _action);
@@ -53,17 +53,27 @@ namespace DecryptionBusiness
         {
             XmlDocument soapEnvelopeDocument = new XmlDocument();
             content = content.Replace("\"", "\\\"");
-            string xml = String.Format(@"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:ser=""http://servc.t2l3a.com/"">
+/*            string xml = String.Format(@"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:ser=""http://servc.t2l3a.com/"">
                <soapenv:Header/>
                <soapenv:Body>
                   <ser:getMessage>
                      <fileName>{0}</fileName>
-                     <fieContent>{1}</fieContent>
+                     <fileContent>{1}</fileContent>
                      <currentKey>{2}</currentKey>
                   </ser:getMessage>
                </soapenv:Body>
-            </soapenv:Envelope>", filename, XmlConvert.EncodeName(content), key);
-        
+            </soapenv:Envelope>", filename, XmlConvert.EncodeName(content), key);*/
+            string xml = String.Format(@"<?xml version=""1.0"" encoding=""UTF-8""?><S:Envelope xmlns:S=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:SOAP-ENV=""http://schemas.xmlsoap.org/soap/envelope/"">
+                                        <SOAP-ENV:Header/>
+                                           <S:Body xmlns:ns2=""http://wsJax.payara.fish/"">
+                                                <ns2:sendCurrentFile>
+                                                     <fileName>{0}</fileName>
+                                                     <fileContent>{1}</fileContent>
+                                                     <currentKey>{2}</currentKey>
+                                                 </ns2:sendCurrentFile>
+                                              </S:Body>
+                                           </S:Envelope>", filename, XmlConvert.EncodeName(content), key);
+
             soapEnvelopeDocument.LoadXml(xml);
             return soapEnvelopeDocument;
         }
