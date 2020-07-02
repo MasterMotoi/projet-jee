@@ -45,7 +45,7 @@ public class WsJax {
             @WebParam(name = "currentKey") String currentKey
     ) {
         
-        
+        System.out.println("message reçu");
         System.out.println(fileName);
         System.out.println(fileContent);
         System.out.println(currentKey);
@@ -71,13 +71,13 @@ public class WsJax {
         try
         {
             context = new InitialContext();
-            factory = (ConnectionFactory) context.lookup("message");
-            destination = (Destination) context.lookup("messageDest");
+            factory = (ConnectionFactory) context.lookup("jms/message");
+            destination = (Destination) context.lookup("jms/messageDest");
             connection = factory.createConnection();
             session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             sender = session.createProducer(destination);
             ObjectMessage objectMessage = session.createObjectMessage();
-            objectMessage.setObject((Serializable) file);
+            objectMessage.setObject(file);
             connection.start();
             //final TextMessage msg = session.createTextMessage();           
             //msg.setText(message);

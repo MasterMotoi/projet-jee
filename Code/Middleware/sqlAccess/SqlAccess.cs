@@ -11,6 +11,7 @@ namespace sqlAccess
 {
     public class SqlAccess : ISqlAccess
     {
+        private string connectionString = @"Data Source=(local)\\sqlexpress;Initial Catalog=client;Integrated Security=True;";
 
         public void sqlConnect ()
         {
@@ -19,7 +20,7 @@ namespace sqlAccess
 
         public User[] getAllUser()
         {
-            SqlConnection sqlCon = new SqlConnection(@"Data Source=(local)\sqlexpress;Initial Catalog=user;Integrated Security=True;");
+            SqlConnection sqlCon = new SqlConnection(@"Data Source=(local)\sqlexpress;Initial Catalog=client;Integrated Security=True;");
             List<User> users = new List<User>();
             SqlDataAdapter sqlda = new SqlDataAdapter("Select * from [client]", sqlCon);
             DataTable dtbl = new DataTable();
@@ -38,7 +39,7 @@ namespace sqlAccess
 
         public User[] getUserByParameterValue(string parameter, string value )
         {
-            SqlConnection sqlCon = new SqlConnection(@"Data Source=(local)\sqlexpress;Initial Catalog=user;Integrated Security=True;");
+            SqlConnection sqlCon = new SqlConnection(@"Data Source=(local)\sqlexpress;Initial Catalog=client;Integrated Security=True;");
             List<User> users = new List<User>();
             SqlDataAdapter sqlda = new SqlDataAdapter("Select * from [client] WHERE "+ parameter+ "= '"+ value+"'" , sqlCon);
             DataTable dtbl = new DataTable();
@@ -74,6 +75,17 @@ namespace sqlAccess
             return users.ToArray();
         }
 
-
+        public void createLog(dataPersistence.log log)
+        {
+            SqlConnection sqlCon = new SqlConnection(@"Data Source=(local)\sqlexpress;Initial Catalog=client;Integrated Security=True;");
+            string sql = "INSERT INTO log (LogType,Data,LogDate) VALUES ('" + log.type + "','" + log.data + "','"+ log.date.ToString("yyyy-MM-dd HH:mm:ss") +"')";
+            sqlCon.Open();
+            SqlDataAdapter sqlda = new SqlDataAdapter();
+            SqlCommand command = new SqlCommand(sql, sqlCon);
+            sqlda.InsertCommand = new SqlCommand(sql, sqlCon);
+            sqlda.InsertCommand.ExecuteNonQuery();
+            command.Dispose();
+            sqlCon.Close();
+        }
     }
 }
