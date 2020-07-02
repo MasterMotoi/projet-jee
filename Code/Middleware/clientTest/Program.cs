@@ -58,7 +58,7 @@ namespace clientTest
                 msg.appVersion = "1.0";
                 msg.operationVersion = "1.0";
                 msg.operationName = "notif";
-                msg.data = new object[] { (object)"true", (object)"textfile.txt|fichier décrypté", (object)"AADD", (object)80};
+                msg.data = new object[] { (object)"true", (object)"textfile.txt|fichier décrypté", (object)"AADC", (object)80};
                 returnMsg = _clientProxy.server(msg);
                 Console.WriteLine("Server call finished");
                 Console.WriteLine(returnMsg.info);

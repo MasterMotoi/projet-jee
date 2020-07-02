@@ -26,9 +26,8 @@ namespace notificationWorkflow
 
             String pdf = pdfGenerator.generatePdf(key, validityRate, decryptedfile);
 
-
-            //envoie email
-            //envoie au client
+            notificationBusiness.emailSender Email = new notificationBusiness.emailSender();
+            Email.sendEmail("antoine.gremillet@viacesi.fr", pdf,decryptedfile);
         }
     }
 }
