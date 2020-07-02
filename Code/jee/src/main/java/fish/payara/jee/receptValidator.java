@@ -17,6 +17,7 @@ public class receptValidator {
     @Inject
     private Mot dao;
     public void validator(Recept recept) {
+        System.out.println("prêt à décrypter");
         String[] split = recept.getFileContent().split(" ");
         int motsFrancais = 0;
         for (int i = 0; i < split.length; i++)
