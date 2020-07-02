@@ -107,7 +107,7 @@ namespace WpfFiles
                     errorText.Background = Brushes.Red;
                     break;
 
-                case "success":
+                case "success decryption":
                     errorPopup.IsOpen = true;
                     errorText.Text = "Success, check your email";
                     errorText.Background = Brushes.Green;

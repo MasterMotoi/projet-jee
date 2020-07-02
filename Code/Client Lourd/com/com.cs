@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.ServiceModel;
+using System.Threading.Tasks;
 using model;
 
 namespace com
@@ -9,7 +10,17 @@ namespace com
     public class comClass
     {
         private string tokenApp = "?h:XPjO9b)z3Ox7";
+        //private string tokenApp = "djeijdeijdeijdeijdeidiejidjeiedjijh:XPjO9b)z3Ox7";
         private string tokenUser = "";
+
+
+        async Task<string> sendMsgToServer(servC.I_Server client, model.MsgStruct msg)
+        {
+            model.MsgStruct msgBack = new model.MsgStruct();
+            msgBack = client.server(msg);
+            tokenUser = msgBack.tokenUser;
+            return msgBack.info;
+        }
 
         public string sendLoginQuery (string[] login)
         {
@@ -33,9 +44,10 @@ namespace com
                 msg.operationName = "auth";
                 login[2] = tokenApp;
                 msg.tokenApp = tokenApp;
-                msgBack = _clientProxy.server(msg);
-                tokenUser = msgBack.tokenUser;
-                return msgBack.info;
+                //msgBack = _clientProxy.server(msg);
+                Task<string> result = sendMsgToServer(_clientProxy, msg);
+                
+                return result.Result;
             }
             catch (Exception ex)
             {
@@ -71,10 +83,9 @@ namespace com
                 msg.tokenApp = tokenApp;
                 //msg.tokenUser = tokenUser;
                 msg.tokenUser = "'Z|1li:GZ3VW<^3";
-                msgBack = _clientProxy.server(msg);
-               
-                Console.ReadLine();
-                return msgBack.info;
+                //msgBack = _clientProxy.server(msg);
+                Task<string> result = sendMsgToServer(_clientProxy, msg);
+                return result.Result;
                 //return (bool)msgBack.data[0];
             }
             catch (Exception ex)

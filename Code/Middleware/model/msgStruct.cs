@@ -35,6 +35,7 @@ namespace model
         [DataMember]
         public string operationVersion = "1.0";
 
+
         /*
         public bool getStatutOp() { return this.statutOp; }
         public string getInfo() { return this.info; }
