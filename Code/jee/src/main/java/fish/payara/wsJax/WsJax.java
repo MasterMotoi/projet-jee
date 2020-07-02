@@ -62,6 +62,7 @@ public class WsJax {
     public void sendJMSMessage (Recept file)
     {
         Context context = null;
+        System.out.println();
         ConnectionFactory factory = null;
         Connection connection = null;
         Destination destination = null;
