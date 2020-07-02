@@ -32,6 +32,10 @@ public class listener implements MessageListener {
     public listener() {
     }
     
+    /**
+     *
+     * @param message
+     */
     @Override
     public void onMessage(Message message) {
         Recept receivedFile = null;
@@ -39,13 +43,15 @@ public class listener implements MessageListener {
         try{
             System.out.println("Bonjour ici OnMessage");
             if(message instanceof Recept){
-                ObjectMessage  myMessage = (ObjectMessage ) message;
+                ObjectMessage  myMessage;
+                myMessage = (ObjectMessage ) message;
                  System.err.println("Object Message Cast working");
                  receivedFile = (Recept) myMessage.getObject();
                  System.err.println("Recept cast working");
                  System.err.println("Envoie JMS : fichier= " + receivedFile.getFileName()+" Clef = "+receivedFile.getCurrentKey());     
                  receptValidator receptValidate = new receptValidator();
                  receptValidate.validator(receivedFile);
+                 System.out.println("Bonjour ici OnMessage");
             }
 
             /*
