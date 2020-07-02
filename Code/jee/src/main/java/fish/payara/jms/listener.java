@@ -39,7 +39,8 @@ public class listener implements MessageListener {
         try{
             System.out.println("Bonjour ici OnMessage");
             if(message instanceof Recept){
-                ObjectMessage  myMessage = (ObjectMessage ) message;
+                ObjectMessage  myMessage;
+                myMessage = (ObjectMessage ) message;
                  System.err.println("Object Message Cast working");
                  receivedFile = (Recept) myMessage.getObject();
                  System.err.println("Recept cast working");
