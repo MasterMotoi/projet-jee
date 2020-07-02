@@ -32,6 +32,10 @@ public class listener implements MessageListener {
     public listener() {
     }
     
+    /**
+     *
+     * @param message
+     */
     @Override
     public void onMessage(Message message) {
         Recept receivedFile = null;
