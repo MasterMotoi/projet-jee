@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D85B7248-6C43-4F81-B3CF-B913AF621233}</ProjectGuid>
+    <ProjectGuid>{D937AEB4-ED29-473B-A05C-1CAA9363B4F9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>workflowController</RootNamespace>
-    <AssemblyName>workflowController</AssemblyName>
+    <RootNamespace>notificationBusiness</RootNamespace>
+    <AssemblyName>notificationBusiness</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,10 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PdfSharp, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.Charting.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,38 +48,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="I_WorkflowController.cs" />
-    <Compile Include="WorkflowController.cs" />
+    <Compile Include="emailSender.cs" />
+    <Compile Include="pdfGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\authentificationWorkflow\authentificationWorkflow.csproj">
-      <Project>{5be2d795-55c4-4f0a-970b-202d1df9b3f6}</Project>
-      <Name>authentificationWorkflow</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\dataPersistence\dataPersistence.csproj">
-      <Project>{ca7d0a31-5585-4879-a21b-7709310d6814}</Project>
-      <Name>dataPersistence</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\decryptionWorkflow\decryptionWorkflow.csproj">
-      <Project>{420098c0-9910-4b97-b94e-156d508e476a}</Project>
-      <Name>decryptionWorkflow</Name>
-    </ProjectReference>
     <ProjectReference Include="..\model\model.csproj">
       <Project>{bacbc0b0-d718-4022-8131-ae5379b00c94}</Project>
       <Name>model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\notificationWorkflow\notificationWorkflow.csproj">
-      <Project>{2370253b-7860-4c5e-bff9-d1a54c2ce8ab}</Project>
-      <Name>notificationWorkflow</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\sqlAccess\sqlAccess.csproj">
-      <Project>{cc31ccb4-96e6-44a6-9755-6bd464072457}</Project>
-      <Name>sqlAccess</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

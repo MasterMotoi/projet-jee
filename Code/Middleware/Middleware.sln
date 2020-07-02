@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30204.135
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1169
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "authentificationWorkflow", "authentificationWorkflow\authentificationWorkflow.csproj", "{5BE2D795-55C4-4F0A-970B-202D1DF9B3F6}"
 EndProject
@@ -20,6 +20,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dataPersistence", "dataPersistence\dataPersistence.csproj", "{CA7D0A31-5585-4879-A21B-7709310D6814}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sqlAccess", "sqlAccess\sqlAccess.csproj", "{CC31CCB4-96E6-44A6-9755-6BD464072457}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "notificationWorkflow", "notificationWorkflow\notificationWorkflow.csproj", "{2370253B-7860-4C5E-BFF9-D1A54C2CE8AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "notificationBusiness", "notificationBusiness\notificationBusiness.csproj", "{D937AEB4-ED29-473B-A05C-1CAA9363B4F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +67,14 @@ Global
 		{CC31CCB4-96E6-44A6-9755-6BD464072457}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC31CCB4-96E6-44A6-9755-6BD464072457}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC31CCB4-96E6-44A6-9755-6BD464072457}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2370253B-7860-4C5E-BFF9-D1A54C2CE8AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2370253B-7860-4C5E-BFF9-D1A54C2CE8AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2370253B-7860-4C5E-BFF9-D1A54C2CE8AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2370253B-7860-4C5E-BFF9-D1A54C2CE8AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D937AEB4-ED29-473B-A05C-1CAA9363B4F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D937AEB4-ED29-473B-A05C-1CAA9363B4F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D937AEB4-ED29-473B-A05C-1CAA9363B4F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D937AEB4-ED29-473B-A05C-1CAA9363B4F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

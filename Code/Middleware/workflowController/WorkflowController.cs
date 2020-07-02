@@ -86,7 +86,7 @@ namespace workflowController
                     //analyse app_version
                     switch (appVersion)
                     {
-                        case "1.0": //Appelle du controlleur de workflow d'authentification
+                        case "1.0": //Appelle du controlleur de workflow de decryption
                             //decryptionWorkflow.IDecryption decryptionWorkflow = ChannelFactory<decryptionWorkflow.IDecryption>.CreateChannel(new BasicHttpBinding(), epDecrypt);
                             decryptionWorkflow.Decryption decryptionWorkflow = new decryptionWorkflow.Decryption();
                             Console.WriteLine("calling Decrypt CW");
@@ -101,9 +101,28 @@ namespace workflowController
                     returnMsg.tokenUser = message.tokenUser;
                     returnMsg.operationName = "decrypt_return";
                     break;
+                case "notif":
+                    //analyse app_version
+                    switch (appVersion)
+                    {
+                        case "1.0": //Appelle du controlleur de workflow d'de notification
+                            decryptionWorkflow.Decryption decryptionWorkflow = new decryptionWorkflow.Decryption();
+                            notificationWorkflow.Notification notificationWorkflow = new notificationWorkflow.Notification();
+                            Console.WriteLine("calling notif CW");
+                            notificationWorkflow.notify(message);
+                            Console.WriteLine("Notif CW call finished");
+                            break;
+                        default: //retourne message indiquant que le type d'appversion est inconnu
+                            returnMsg.info = "unsuccessful notification - unknow appVersion";
+                            returnMsg.data = new object[2] { (object)false, (object)"unknow appVersion" };
+                            break;
+                    }
+                    returnMsg.tokenUser = message.tokenUser;
+                    returnMsg.operationName = "notif_return";
+                    break;
                 default:
                     //retourne mesage comme quoi le type d'operation est inconnu
-                    returnMsg.info = "unsuccessful authentification - unknow operationName";
+                    returnMsg.info = "unsuccessful request - unknow operationName";
                     returnMsg.operationName = "return";
                     returnMsg.data = new object[2] { (object)false, (object)"unknow operationName" };
                     break;
