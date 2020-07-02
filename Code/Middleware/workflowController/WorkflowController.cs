@@ -24,6 +24,43 @@ namespace workflowController
             string operationName = message.operationName;
             string appVersion = message.appVersion;
 
+            //LOG BDD
+            dataPersistence.log entryLog = new dataPersistence.log();
+            entryLog.type = "msgRequest";
+            sqlAccess.SqlAccess sql = new sqlAccess.SqlAccess();
+            //string tempLog = "";
+            switch (operationName)
+            {
+                case "auth":
+                    entryLog.data = "Authentification with login : "+message.data[0];
+                    break;
+                case "decrypt":
+                    string filesnames = "";
+                    for (int i = 2; i < message.data.Length; i++)
+                    {
+                        string tempFilename;
+                        string[] splitedFile = ((string)message.data[i]).Split(new char[] { '|' }, 2);
+                        tempFilename = splitedFile[0];
+                        if (i != message.data.Length - 1)
+                        {
+                            filesnames = String.Concat(filesnames, tempFilename, ", ");
+                        }
+                    }
+                    entryLog.data = "Decryption - files : " + filesnames;
+                    break;
+                case "default":
+                    entryLog.data = "Unknown operation";
+                    break;
+            }
+            entryLog.date = DateTime.Now;
+
+
+            sql.createLog(entryLog);
+
+
+            
+
+
             //analyse opp_name
             switch (operationName)
             {
@@ -72,6 +109,13 @@ namespace workflowController
                     break;
             }
 
+            //LOG BDD
+            dataPersistence.log returnLog = new dataPersistence.log();
+            returnLog.type = "msgReturn";
+            returnLog.data = returnMsg.info;
+            returnLog.date = DateTime.Now;
+
+            sql.createLog(returnLog);
             return returnMsg;
 
         }
