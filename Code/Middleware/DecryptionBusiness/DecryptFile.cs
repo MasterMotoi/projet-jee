@@ -88,7 +88,7 @@ namespace decryptionBusiness
             Trace.WriteLine("Fichier :" + file.name+ "\nCle :" + key+ "\nDecryption :" + decryptedFile.data+ "\n---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
 
-            clientSoap.CallWebService(key, file.name, decryptedFile.data);
+            //clientSoap.CallWebService(key, file.name, decryptedFile.data);
             
         }
 
