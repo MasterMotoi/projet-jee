@@ -30,7 +30,7 @@ namespace DecryptionBusiness
             // get the response from the completed web request.
             string soapResult;
             using (WebResponse webResponse = webRequest.EndGetResponse(asyncResult))
-            {
+            { 
                 using (StreamReader rd = new StreamReader(webResponse.GetResponseStream()))
                 {
                     soapResult = rd.ReadToEnd();
