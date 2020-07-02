@@ -5,11 +5,13 @@
  */
 package fish.payara.jee;
 
+import java.io.Serializable;
+
 /**
  *
  * @author tombr
  */
-public class Recept {
+public class Recept  implements Serializable{
     
     private String fileName;
     private String fileContent;
