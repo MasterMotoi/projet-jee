@@ -8,13 +8,11 @@ using System.ServiceModel;
 
 namespace authentificationWorkflow
 {
-    [ServiceContract(Namespace = "http:middleware")]
+    //[ServiceContract(Namespace = "http:middleware")]
 
     public interface I_Authentification
     {
-        [OperationContract]
+        //[OperationContract]
         model.MsgStruct validateAuthentification(model.MsgStruct message);
-
-
     }
 }

@@ -14,8 +14,9 @@ namespace workflowController
 
         public model.MsgStruct workflowControl (model.MsgStruct message)
         {
-            EndpointAddress epAuth = new EndpointAddress("http://localhost:8010/Server/services/auth");
-            EndpointAddress epDecrypt = new EndpointAddress("http://localhost:8010/Server/services/decrypt");
+            //EndpointAddress epAuth = new EndpointAddress("http://localhost:8010/Server/services/auth");
+            //EndpointAddress epDecrypt = new EndpointAddress("http://localhost:8010/Server/services/decrypt");
+
             model.MsgStruct returnMsg = new model.MsgStruct();
 
             //Analyse la version de l'app et appelle le controlleur de workflow adéquate en fontion de l'opération
@@ -31,8 +32,8 @@ namespace workflowController
                     switch (appVersion)
                     {
                         case "1.0": //Appelle du controlleur de workflow d'authentification
-                            //*** RAJOUTER TRY CATCH***
-                            authentificationWorkflow.I_Authentification authentificationWorkflow = ChannelFactory<authentificationWorkflow.I_Authentification>.CreateChannel(new BasicHttpBinding(), epAuth);
+                            //authentificationWorkflow.I_Authentification authentificationWorkflow = ChannelFactory<authentificationWorkflow.I_Authentification>.CreateChannel(new BasicHttpBinding(), epAuth);
+                            authentificationWorkflow.Authentification authentificationWorkflow = new Authentification();
                             Console.WriteLine("calling Auth CW");
                             returnMsg = authentificationWorkflow.validateAuthentification(message);
                             Console.WriteLine("Auth CW call finished");                            
@@ -49,8 +50,8 @@ namespace workflowController
                     switch (appVersion)
                     {
                         case "1.0": //Appelle du controlleur de workflow d'authentification
-                            //*** RAJOUTER TRY CATCH***
-                            decryptionWorkflow.IDecryption decryptionWorkflow = ChannelFactory<decryptionWorkflow.IDecryption>.CreateChannel(new BasicHttpBinding(), epDecrypt);
+                            //decryptionWorkflow.IDecryption decryptionWorkflow = ChannelFactory<decryptionWorkflow.IDecryption>.CreateChannel(new BasicHttpBinding(), epDecrypt);
+                            decryptionWorkflow.Decryption decryptionWorkflow = new decryptionWorkflow.Decryption();
                             Console.WriteLine("calling Decrypt CW");
                             returnMsg = decryptionWorkflow.decrypt(message);
                             Console.WriteLine("Decrypt CW call finished");

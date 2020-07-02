@@ -13,8 +13,8 @@
         <Label Content="to select your files." HorizontalAlignment="Left" Margin="53,82,0,0" VerticalAlignment="Top"/>
         <Image HorizontalAlignment="Left" Height="43" Margin="683,360,0,0" VerticalAlignment="Top" Width="100" Source="/cesi.png"/>
         <Button x:Name="sendBtn" Content="Send" HorizontalAlignment="Left" Margin="519,360,0,0" VerticalAlignment="Top" Height="32" Width="62" Click="sendBtn_Click"/>
-        <Popup x:Name="emptyList" Width="300" Height="50">
-            <TextBlock Text="You have to chose at least a file" Height="50" Width="300" Background="Red"/>
+        <Popup x:Name="errorPopup" Width="300" Height="50">
+            <TextBlock x:Name="errorText" Text="You have to chose at least a file" Height="50" Width="300" Background="Red"/>
         </Popup>
     </Grid>
 </Window>

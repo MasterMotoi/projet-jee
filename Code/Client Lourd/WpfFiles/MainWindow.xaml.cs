@@ -34,7 +34,7 @@ namespace WpfFiles
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            emptyList.IsOpen = false;
+            errorPopup.IsOpen = false;
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.DefaultExt = ".txt";
             ofd.Multiselect = true;
@@ -57,6 +57,9 @@ namespace WpfFiles
             int i = 0;
             controller ctrl = new controller();
             String[] jaggedFiles = new String[filenamesLb.Items.Count];
+            errorPopup.IsOpen = true;
+            errorText.Text = "Decryption in progress, please wait...";
+            errorText.Background = Brushes.Orange;
 
 
             foreach (string filename in filenamesLb.Items)
@@ -82,9 +85,34 @@ namespace WpfFiles
 
             filenamesLb.Items.Clear();
 
-            if (ctrl.checkFilesAndSend(jaggedFiles) == false)
+            string msgBack = ctrl.checkFilesAndSend(jaggedFiles);
+
+            switch (msgBack)
             {
-                emptyList.IsOpen = true;
+                case "noFiles":
+                    errorPopup.IsOpen = true;
+                    errorText.Text = "You have to chose at least a file";
+                    errorText.Background = Brushes.Red;
+                    break;
+
+                case "invalid tokenUser":
+                    errorPopup.IsOpen = true;
+                    errorText.Text = "Invalid Token";
+                    errorText.Background = Brushes.Red;
+                    break;
+
+                case "error com":
+                    errorPopup.IsOpen = true;
+                    errorText.Text = "Error when sending for decryption";
+                    errorText.Background = Brushes.Red;
+                    break;
+
+                case "success":
+                    errorPopup.IsOpen = true;
+                    errorText.Text = "Success, check your email";
+                    errorText.Background = Brushes.Green;
+                    break;
+
             }
 
         }

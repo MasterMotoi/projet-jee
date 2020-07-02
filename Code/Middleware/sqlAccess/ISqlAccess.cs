@@ -8,19 +8,19 @@ using dataPersistence;
 
 namespace sqlAccess
 {
-    [ServiceContract(Namespace = "http:middleware")]
+    //[ServiceContract(Namespace = "http:middleware")]
     public interface ISqlAccess
     {
-        [OperationContract]
+        //[OperationContract]
         void sqlConnect();
 
-        [OperationContract]
+        //[OperationContract]
         User[] getAllUser();
 
-        [OperationContract]
+        //[OperationContract]
         User[] getUserByParameterValue(string parameter, string value);
 
-        [OperationContract]
+        //[OperationContract]
         User[] getUserBy2ParametersValue(string parameter, string value, string parameter2, string value2);
     }
 }

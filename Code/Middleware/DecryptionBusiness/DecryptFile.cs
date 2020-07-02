@@ -83,26 +83,16 @@ namespace decryptionBusiness
                 tempChar = Convert.ToInt32(file.data[i]) ^ Convert.ToInt32(scaledKey[i]);
                 decryptedFile.data += (char)tempChar;
             }
-            Console.WriteLine("Fichier :");
-            Console.WriteLine(file.name);
-            Console.WriteLine("Cle :");
-            Console.WriteLine(key);
-            Console.WriteLine("Decryption :");
-            Trace.WriteLine(decryptedFile.data);
-            Trace.WriteLine("Fichier :");
-            Trace.WriteLine(file.name);
-            Trace.WriteLine("Cle :");
-            Trace.WriteLine(key);
-            Trace.WriteLine("Decryption :");
-            Trace.WriteLine(decryptedFile.data);
-            Trace.WriteLine(""); 
-            Trace.WriteLine("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-            Trace.WriteLine("");
+            Console.WriteLine("Fichier :"+ file.name+ "\nCle :" + key+ "\nDecryption :" + decryptedFile.data);
+
+            Trace.WriteLine("Fichier :" + file.name+ "\nCle :" + key+ "\nDecryption :" + decryptedFile.data+ "\n---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
 
             clientSoap.CallWebService(key, file.name, decryptedFile.data);
             
         }
 
+        // a utiliser si la classe est heberge en tant que service
         public void decryptFile(model.File file)
         {
             DecryptFile businessDecrypter = new DecryptFile();

@@ -14,21 +14,11 @@ namespace authentificationWorkflow
     public class Authentification : I_Authentification
     {
         SqlAccess sqlAccess = new SqlAccess();
-        /*
-        private string login;
-        private string password;*/
-
-        /*
-        public Authentification()
-        {
-            this.login = login;
-            this.password = password;
-        }*/
 
         public model.MsgStruct validateAuthentification(model.MsgStruct message)
         {
             model.MsgStruct returnMsg = new model.MsgStruct();
-            EndpointAddress epSql = new EndpointAddress("http://localhost:8010/Server/services/sql_access");
+            //EndpointAddress epSql = new EndpointAddress("http://localhost:8010/Server/services/sql_access");
 
             User[] users;
             string tokenUser="";
@@ -36,10 +26,11 @@ namespace authentificationWorkflow
             string password = message.data[1].ToString();
 
             //check password & login en BDD
-            //sqlAccess.sqlConnect();
             try
             {
-                sqlAccess.ISqlAccess proxySql= ChannelFactory<sqlAccess.ISqlAccess>.CreateChannel(new BasicHttpBinding(), epSql);
+                //sqlAccess.ISqlAccess proxySql= ChannelFactory<sqlAccess.ISqlAccess>.CreateChannel(new BasicHttpBinding(), epSql);
+                sqlAccess.SqlAccess proxySql = new SqlAccess();
+
                 Console.WriteLine("calling CAM");
                 users = proxySql.getUserBy2ParametersValue("login", login, "password", password);
                 Console.WriteLine("CAM call finished");
@@ -49,14 +40,8 @@ namespace authentificationWorkflow
                     Console.WriteLine("authentification cool");
                     //generation tokenUser
                     tokenUser = "'Z|1li:GZ3VW<^3";
-
-                    //returnMsg.statutOp = false;
                     returnMsg.info = "successful authentification";
-                    //msg.tokenUser = tokenUser;
-                    //returnMsg.operationName = "auth_return";
-                    //returnMsg.tokenApp = "MiddlewareToken";
                     returnMsg.tokenUser = tokenUser;
-                    //returnMsg.appVersion = "1.0";
                     returnMsg.operationVersion = "1.0";
                     returnMsg.data = new object[2] { (object)true, (object)tokenUser };
                 }
@@ -79,8 +64,6 @@ namespace authentificationWorkflow
                 returnMsg.operationVersion = "1.0";
                 returnMsg.data = new object[2] { (object)false, (object)"Database access error" };
             }
-
-
 
             //renvoie au CAM
             return returnMsg;

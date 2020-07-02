@@ -9,11 +9,11 @@ using System.Runtime.Serialization;
 
 namespace workflowController
 {
-    [ServiceContract(Namespace = "http:middleware")]
+    //[ServiceContract(Namespace = "http:middleware")]
 
     public interface I_WorkflowController
     {
-        [OperationContract]
+        //[OperationContract]
         model.MsgStruct workflowControl(model.MsgStruct message);
     }
 

@@ -14,7 +14,7 @@ namespace DecryptionBusiness
         public static void CallWebService(string key, string filename, string content)
         {
             var _url = "http://192.168.43.211:8080/WsJax/WsJax";
-            var _action = "";
+            var _action = "http://192.168.43.211:8080/WsJax/WsJax";
 
             XmlDocument soapEnvelopeXml = CreateSoapEnvelope(key, filename, content);
             HttpWebRequest webRequest = CreateWebRequest(_url, _action);
@@ -30,7 +30,7 @@ namespace DecryptionBusiness
             // get the response from the completed web request.
             string soapResult;
             using (WebResponse webResponse = webRequest.EndGetResponse(asyncResult))
-            {
+            { 
                 using (StreamReader rd = new StreamReader(webResponse.GetResponseStream()))
                 {
                     soapResult = rd.ReadToEnd();
@@ -63,16 +63,7 @@ namespace DecryptionBusiness
                   </ser:getMessage>
                </soapenv:Body>
             </soapenv:Envelope>", filename, XmlConvert.EncodeName(content), key);
-            /*string xml = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://servc.t2l3a.com/\">" +
-                "<soapenv:Header/>" +
-                "<soapenv:Body>" +
-                    "<ser:getMessage>" +
-                        $"<fileName>{filename}</fileName>" +
-                        $"<fieContent>{null}</fieContent>" +
-                        $"<currentKey>{key}</currentKey>" +
-                    "</ser:getMessage>" +
-                "</soapenv:Body>" +
-            "</soapenv:Envelope>";*/
+        
             soapEnvelopeDocument.LoadXml(xml);
             return soapEnvelopeDocument;
         }
